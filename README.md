@@ -1,6 +1,6 @@
 # PrincessPower_Project
 
-We will be simulating rocket launching sequences or SpaceX!
+We will be simulating rocket launching sequences of SpaceX!
 
 - Group name: Princess Power
 - Group number: 21
