@@ -81,4 +81,6 @@ int main(){
     Client* StarLink = new Client();
     StarLink->createCluster();
     StarLink->deployCluster();
+    delete StarLink;
+    StarLink=nullptr;
 }
