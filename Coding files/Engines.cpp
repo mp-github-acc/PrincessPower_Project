@@ -5,10 +5,10 @@ class Engine{
 
 };
 
-class Merline : public Engine{
+class Merlin : public Engine{
 
 };
 
-class VMerline : public Engine{
+class VacuumMerlin : public Engine{
 
 };
