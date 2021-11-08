@@ -109,10 +109,11 @@ class Client{ //what happens here --- merge
         }
 };
 
+
 int main()
 {
-    cout << "----------Main in Satellites.cpp----------------"
+    cout << "----------Main in Satellites.cpp----------------" << endl;
     Client *StarLink = new Client();        // create the client which handles the cluster
     StarLink->createCluster();              // add the satellites to the cluster
-    StarLink->deployCluster();              // deploy -> remove() in cluster
+    StarLink->deployCluster();              // deploy -> remove() in cluster    
 }
