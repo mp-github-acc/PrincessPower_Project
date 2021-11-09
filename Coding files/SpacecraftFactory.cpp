@@ -33,31 +33,31 @@ class DragonFactory : public SpacecraftFactory{
         }
 };
 
-class Client{
-    private:
-        Spacecraft* spacecraft[2];
-    public:
-        Client(){
-            spacecraft[0] = new CrewDragon();  
-            spacecraft[1] = new Dragon();
-        }
-        ~Client(){
-            delete spacecraft[0];
-            delete spacecraft[1];
-        }
-};
+// class Client{
+//     private:
+//         Spacecraft* spacecraft[2];
+//     public:
+//         Client(){
+//             spacecraft[0] = new CrewDragon();  
+//             spacecraft[1] = new Dragon();
+//         }
+//         ~Client(){
+//             delete spacecraft[0];
+//             delete spacecraft[1];
+//         }
+// };
 
-int main(){
-    SpacecraftFactory** spacecraft = new SpacecraftFactory*[2]; // array of factories
-    spacecraft[0] = new CrewDragonFactory();
-    spacecraft[1] = new DragonFactory();
+// int main(){
+//     SpacecraftFactory** spacecraft = new SpacecraftFactory*[2]; // array of factories
+//     spacecraft[0] = new CrewDragonFactory();
+//     spacecraft[1] = new DragonFactory();
 
-    cout << "--------Main in Spacecraft Factory--------" << endl;
-    Spacecraft* newS = spacecraft[0]->createSpacecraft();
-    cout << newS->getName() << endl;
-    newS = spacecraft[1]->createSpacecraft();
-    cout << newS->getName() << endl;
-    // delete spacecraft;
+//     cout << "--------Main in Spacecraft Factory--------" << endl;
+//     Spacecraft* newS = spacecraft[0]->createSpacecraft();
+//     cout << newS->getName() << endl;
+//     newS = spacecraft[1]->createSpacecraft();
+//     cout << newS->getName() << endl;
+//     // delete spacecraft;
 
-    return 0;
-}
+//     return 0;
+// }

@@ -51,9 +51,12 @@ class Cluster : public StarLink{ //Leaf
 
     public:
         Cluster(){
+            cout << "Adding satellite: ";
             while(getTotal() < 10){
                 add(new Satellite());
             }
+            cout << endl;
+            cout << "Total: " << total << endl;
         };
         ~Cluster(){};
         void add(StarLink *satellite)
@@ -62,7 +65,8 @@ class Cluster : public StarLink{ //Leaf
             satellite->setNumber(number);           // give the satellite a number
             this->cluster_.push_back(satellite);    // add satellite to the list
             satellite->setParent(this);             // not sure why this here yet
-            cout << "Total : " << total << " - S.Number : " << satellite->getNumber() << endl;
+            // cout << "Total : " << total << " - S.Number : " << satellite->getNumber() << endl;
+            cout << "[" << number << "] ";
         }
         void remove()   // deploy instead of remove 
         {   // satellites deploy off rocket
@@ -110,10 +114,10 @@ class Client{ //what happens here --- merge
 };
 
 
-int main()
-{
-    cout << "----------Main in Satellites.cpp----------------" << endl;
-    Client *StarLink = new Client();        // create the client which handles the cluster
-    StarLink->createCluster();              // add the satellites to the cluster
-    StarLink->deployCluster();              // deploy -> remove() in cluster    
-}
+// int main()
+// {
+//     cout << "----------Main in Satellites.cpp----------------" << endl;
+//     Client *StarLink = new Client();        // create the client which handles the cluster
+//     StarLink->createCluster();              // add the satellites to the cluster
+//     StarLink->deployCluster();              // deploy -> remove() in cluster    
+// }

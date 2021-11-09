@@ -7,10 +7,10 @@ void message();
 
 int main()
 {
-	bool continue=true;
+	bool cont = true;
 	int choice=0;
 
-	while(continue)
+	while(cont)
 	{
 
 		option1();
@@ -54,7 +54,7 @@ int main()
 
 
 
-		continue=false;
+		cont=false;
 	}
 
 
@@ -65,7 +65,7 @@ int main()
 
 void message(string msg)
 {
-	cout<<msg<<end;
+	cout << msg << endl;
 }
 
 void option1()
