@@ -1,6 +1,7 @@
 #include <iostream>
 #include <list> // store the Component
 using namespace std;
+//USE STATIC VAR INSTEAD OF NUMBER??
 
 class StarLink{ //Component  ------> Abstract Satellite (not supposed to be)
     protected:
