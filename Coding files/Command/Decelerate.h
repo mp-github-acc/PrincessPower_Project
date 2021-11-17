@@ -4,6 +4,8 @@
 #include "Command.h"
 
 class Decelerate : public Command{
-
+    public:
+        Decelerate(Rocket* r);
+        ~Decelerate();
 };
 #endif

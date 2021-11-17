@@ -4,6 +4,8 @@
 #include "Command.h"
 
 class Ignite : public Command{
-
+    public:
+        Ignite(Rocket* r);
+        ~Ignite();
 };
 #endif

@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Satellites.cpp"
-#include "SpacecraftFactory.cpp"
+#include "../Factories/SpacecraftFactory.h"
 #include "Engines.cpp"
 #include <list>
 using namespace std;
@@ -23,19 +23,4 @@ public:
     virtual void addEngines();
     bool buildComplete();
 };
-class Falcon9Core : public Rocket
-{
-private:
-public:
-    Falcon9Core();
-    ~Falcon9Core();
-    void addEngines();
-};
 
-class FalconHeavy : public Rocket
-{
-public:
-    FalconHeavy();
-    ~FalconHeavy();
-    void addEngines();
-};

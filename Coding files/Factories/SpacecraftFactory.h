@@ -1,7 +1,7 @@
 #ifndef SPACECRAFTFACTORY_H
 #define SPACECRAFTFACTORY_H
-#include "Dragon.h"
-#include "CrewDragon.h"
+#include "../Products/CrewDragon.h"
+#include "../Products/Dragon.h"
 
 class SpacecraftFactory{
     private:

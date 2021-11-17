@@ -1,77 +1,3 @@
-// #include <iostream>
-// #include "Satellites.cpp"
-// #include "SpacecraftFactory.cpp"
-// #include "Engines.cpp"
-// #include <list>
-// using namespace std;
-
-// class Rocket{ 
-//     protected:
-//         Spacecraft* spacecraft_;
-//         string rocketName;
-//         list<Engine*> engines;
-//     public:
-//         Rocket(){}
-//         virtual ~Rocket(){}
-//         void setRocketName(string s){
-//             this->rocketName = s;
-//         }
-//         string getRocketName(){
-//             return this->rocketName;
-//         }
-//         void addSpaceCraft(){
-//             int chooseSpacecraft;
-//             cout << "Choose a spacecraft: Crew Dragon[0] or Dragon[1]";
-//             cin >> chooseSpacecraft;
-//             if(chooseSpacecraft == 0){
-//                 spacecraft_ = new CrewDragon();
-//             }else{
-//                 spacecraft_ = new Dragon();
-//             }
-//         }
-//         virtual void addEngines(){}
-// };
-
-// class Falcon9Core : public Rocket{
-//     public:
-//         Falcon9Core(){
-//             setRocketName("Falcon 9");
-//         };
-//         ~Falcon9Core(){
-//         }
-//         // void addSatellite(int n){
-//         //     string choice;
-//         //     cout << "Do you want satellites? Yes or No";
-//         //     cin >> choice;
-//         //     if(choice == "Yes" || choice == "yes"){
-//         //         sat = new Cluster(); // make the satellites
-//         //         // sat->remove();
-//         //     }else{
-//         //         sat = nullptr;
-//         //     }
-//         // }
-//         void addEngines(){
-//             for (int i = 0 ; i < 9; i++){ //basically just to add certain amount
-//                 //engines.push_back();
-//             }
-//             //engines.push_back(); ---add 1 vacuum merlin engine
-//         }
-// };
-
-// class FalconHeavy : public Rocket{
-//     public:
-//         FalconHeavy(){
-//             setRocketName("Falcon Heavy");
-//         }
-//         ~FalconHeavy();
-//         void addEngines(){
-//             for (int i = 0 ; i < 27; i++){ //basically just to add certain amount
-//                 //engines.push_back();
-//             }
-//             //engines.push_back(); ---add 1 vacuum merlin engine
-//         }
-// };
-
 #include "Rocket.h"
 
 Rocket::Rocket(){
@@ -168,45 +94,20 @@ bool Rocket::buildComplete(){
     return true;
 }
 
-// ---------------------Falcon9Core Implementation ------------------------ // 
-Falcon9Core::Falcon9Core(){
-    cout << "Falcon 9 created!" << endl;
-    setRocketName("Falcon 9");
-    this->cluster_ = nullptr;
-}
-Falcon9Core::~Falcon9Core(){
-    cout << "Falcon9Core grounded!" << endl;
-}
-void Falcon9Core::addEngines(){
-    cout << "Create engines for Falcon9Core..." << endl;
-}
-// ---------------------FalconHeavy Implementation ------------------------ //
-FalconHeavy::FalconHeavy(){
-    cout << "FalconHeavy created!" << endl;
-    setRocketName("Falcon Heavy");
-    this->cluster_ = nullptr;
-}
-FalconHeavy::~FalconHeavy(){
-    cout << "FalconHeavy grounded!" << endl;
-}
-void FalconHeavy::addEngines(){
-    cout << "Create engines for FalconHeavy..." << endl;
-}
-
-// --------------------- Testing Purposes ------------------------ //
-int main(){
-    Rocket* newR = new Falcon9Core();
-    cout << "Rocket Name: " << newR->getRocketName() << endl;
-    cout << "-----------------------------------------------" << endl;
-    newR->addSpacecraft();
-    cout << "-----------------------------------------------" << endl;
-    newR->addSatellites();
-    cout << "-----------------------------------------------" << endl;
-    if(newR->buildComplete()){
-        cout << "Rocket is complete!" << endl;
-    }
-    else{
-        cout << "Rocket is incomplete!" << endl;
-    }
-    return 0;
-}
+// // --------------------- Testing Purposes ------------------------ //
+// int main(){
+//     Rocket* newR = new Falcon9Core();
+//     cout << "Rocket Name: " << newR->getRocketName() << endl;
+//     cout << "-----------------------------------------------" << endl;
+//     newR->addSpacecraft();
+//     cout << "-----------------------------------------------" << endl;
+//     newR->addSatellites();
+//     cout << "-----------------------------------------------" << endl;
+//     if(newR->buildComplete()){
+//         cout << "Rocket is complete!" << endl;
+//     }
+//     else{
+//         cout << "Rocket is incomplete!" << endl;
+//     }
+//     return 0;
+// }
