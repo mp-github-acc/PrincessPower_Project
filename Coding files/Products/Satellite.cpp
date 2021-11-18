@@ -1,5 +1,5 @@
 #include <iostream>
-#include <list> // store the Component
+#include <list> 
 
 #include "Satellite.h"
 StarLink::StarLink() {}
