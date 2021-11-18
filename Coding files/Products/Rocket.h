@@ -2,13 +2,13 @@
 #define ROCKET_H
 #include <iostream>
 
-#include "../Satellite.cpp"
+#include "Satellite.h"
 #include "../Factories/SpacecraftFactory.h"
+#include "../State/State.h"
+#include "../SimulationState.h"
 // #include "Engine.h"
 #include <list>
 using namespace std;
-#include "../State/State.h"
-#include "../SimulationState.h"
 
 
 class Rocket
