@@ -6,6 +6,6 @@ using namespace std;
 
 class State{
     public:
-        virtual void hanlde() = 0;
+        virtual void handle() = 0;
 };
 #endif

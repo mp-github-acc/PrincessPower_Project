@@ -5,6 +5,7 @@ class MerlinVacuum : public Engine{
   private:
   
   public:
-  MerlinVacuum();
+    MerlinVacuum();
+    ~MerlinVacuum();
 };
 #endif
