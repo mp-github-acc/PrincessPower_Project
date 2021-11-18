@@ -6,5 +6,6 @@ class Merlin : public Engine{
   
   public:
   Merlin();
+  virtual ~Merlin();
 };
 #endif
