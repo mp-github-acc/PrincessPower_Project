@@ -1,7 +1,7 @@
 #include <iostream>
 #include "../Satellites.cpp"
 #include "../Factories/SpacecraftFactory.h"
-#include "Engine.h"
+// #include "Engine.h"
 #include <list>
 using namespace std;
 
@@ -12,7 +12,7 @@ protected:
     Spacecraft* spacecraft_;
     string rocketName;
     StarLink* cluster_;
-    list<Engine*> engines;
+    // list<Engine*> engines;
 public:
     Rocket();
     virtual ~Rocket();
