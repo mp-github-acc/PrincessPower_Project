@@ -1,10 +1,10 @@
-#ifndef VACUUMMERLIN_H
-#define VACUUMMERLIN_H
+#ifndef MERLINVACUUM_H
+#define MERLINVACUUM_H
 #include "Engines.h"
-class VacuumMerlin : public Engine{
+class MerlinVacuum : public Engine{
   private:
   
   public:
-  VacuumMerlin();
+  MerlinVacuum();
 };
 #endif
