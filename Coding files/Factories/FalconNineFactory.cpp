@@ -1,5 +1,5 @@
 #include "FalconNineFactory.h"
 
-Rocket* FalconNineFactory::creatRocket(){
+Rocket* FalconNineFactory::createRocket(){
     return new Falcon9Core();
 }

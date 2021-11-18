@@ -1,6 +1,6 @@
 #include "FalconHeavyFactory.h"
 
 
-Rocket* FalconHeavyFactory::creatRocket(){
+Rocket* FalconHeavyFactory::createRocket(){
     return new Falcon9Core();
 }

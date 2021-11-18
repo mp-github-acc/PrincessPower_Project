@@ -2,8 +2,8 @@
 #define FALCONHEAVYFACTORY_H
 #include "RocketFactory.h"
 
-class FalconHeavyFactory : public RocketFacorty{
+class FalconHeavyFactory : public RocketFactory{
     public:
-        Rocket* creatRocket();
+        Rocket* createRocket();
 };
 #endif

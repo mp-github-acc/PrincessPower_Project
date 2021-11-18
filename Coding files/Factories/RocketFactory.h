@@ -3,8 +3,9 @@
 #include "../Products/FalconHeavy.h"
 #include "../Products/FalconNine.h"
 
-class RocketFacorty{
+class RocketFactory{
     public:
-        virtual Rocket* creatRocket() = 0;
+        RocketFactory();
+        virtual Rocket* createRocket() = 0;
 };
 #endif

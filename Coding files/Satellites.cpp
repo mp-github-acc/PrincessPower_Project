@@ -84,35 +84,35 @@ class Cluster : public StarLink{ //Leaf
         }
 };
 
-class Client{ //what happens here --- merge
-    private:
-        StarLink *newCluster;               // keep cluster reference
+// class Client{ //what happens here --- merge
+//     private:
+//         StarLink *newCluster;               // keep cluster reference
 
-    public:
-        Client() { 
-            newCluster = new Cluster();     // make a new composite class 
-        }
-        ~Client() { 
-            delete newCluster;              // delete cluster
-        }
-        void createCluster()
-        {
-            cout << "Creating new cluster..." << endl;
-            while (newCluster->getTotal() < 10)     // change 10 to 60
-            {
-                newCluster->add(new Satellite());   // add a new satellite in the cluster list
-            }
-            cout << "Cluster successfully created!" << endl;
-        }
-        void deployCluster()
-        {
-            newCluster->remove();               // prints out the satellites
-        }
-        void printCluster()
-        {
-            newCluster->print();
-        }
-};
+//     public:
+//         Client() { 
+//             newCluster = new Cluster();     // make a new composite class 
+//         }
+//         ~Client() { 
+//             delete newCluster;              // delete cluster
+//         }
+//         void createCluster()
+//         {
+//             cout << "Creating new cluster..." << endl;
+//             while (newCluster->getTotal() < 10)     // change 10 to 60
+//             {
+//                 newCluster->add(new Satellite());   // add a new satellite in the cluster list
+//             }
+//             cout << "Cluster successfully created!" << endl;
+//         }
+//         void deployCluster()
+//         {
+//             newCluster->remove();               // prints out the satellites
+//         }
+//         void printCluster()
+//         {
+//             newCluster->print();
+//         }
+// };
 
 
 // int main()
