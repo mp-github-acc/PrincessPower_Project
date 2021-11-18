@@ -1,13 +1,13 @@
 #include "FalconNine.h"
 
-Falcon9Core::Falcon9Core(){
+FalconNine::FalconNine(){
     cout << "Falcon 9 created!" << endl;
-    setRocketName("Falcon 9");
-    this->cluster_ = nullptr;
+    // setRocketName("Falcon 9");
+    // this->satelliteCluster = nullptr;
 }
-Falcon9Core::~Falcon9Core(){
+FalconNine::~FalconNine(){
     cout << "Falcon9Core grounded!" << endl;
 }
-void Falcon9Core::addEngines(){
-    cout << "Create engines for Falcon9Core..." << endl;
-}
+// void Falcon9Core::addEngines(){
+//     cout << "Create engines for Falcon9Core..." << endl;
+// }

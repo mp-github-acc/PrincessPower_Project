@@ -5,7 +5,7 @@
 class CrewDragon : public Spacecraft{
     public:
         CrewDragon();
-        ~CrewDragon(){}
+        ~CrewDragon();
         void sendCargo();
 };
 #endif

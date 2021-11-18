@@ -1,10 +1,10 @@
 #include "Dragon.h"
 
-Dragon::Dragon() : Spacecraft()
+Dragon::Dragon()
 {
     setName("Dragon");
 }
-
+Dragon::~Dragon(){}
 void Dragon::sendCargo(){
     
 }

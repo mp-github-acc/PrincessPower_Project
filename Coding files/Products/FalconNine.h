@@ -1,12 +1,13 @@
 #ifndef FALCONNINE_H
 #define FALCONNINE_H
+
 #include "Rocket.h"
-class Falcon9Core : public Rocket
+class FalconNine : public Rocket
 {
-private:
+   
 public:
-    Falcon9Core();
-    ~Falcon9Core();
-    void addEngines();
+    FalconNine();
+    ~FalconNine();
+    // void addEngines();
 };
 #endif

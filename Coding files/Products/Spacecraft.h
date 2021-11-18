@@ -8,8 +8,8 @@ class Spacecraft{
     protected:
         string name;
     public:
-        Spacecraft(){};
-        virtual ~Spacecraft(){};
+        Spacecraft();
+        virtual ~Spacecraft();
         virtual string getName();
         virtual void sendCargo() = 0;
         void setName(string n);
