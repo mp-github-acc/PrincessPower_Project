@@ -1,10 +1,11 @@
 #include <iostream>
-#include "../Satellites.cpp"
+#include "../Satellite.cpp"
 #include "../Factories/SpacecraftFactory.h"
 // #include "Engine.h"
 #include <list>
 using namespace std;
-
+#include "../State/State.h"
+#include "../SimulationState.h"
 
 class Rocket
 {
@@ -13,6 +14,12 @@ protected:
     string rocketName;
     StarLink* cluster_;
     // list<Engine*> engines;
+
+    // 
+    State* state;
+    Satellite* satellite;
+
+
 public:
     Rocket();
     virtual ~Rocket();
@@ -22,5 +29,18 @@ public:
     void addSatellites();
     virtual void addEngines();
     bool buildComplete();
+
+    // 
+    
+    void checkOne();
+    void checkTwo();
+    SimulationState* createSimState();
+    SimulationState* getSimState();
+    void handleRequest();
+    void startEngine();
+    void accelerate();
+    void decelerate();
+    void staticFire();
+    
 };
 
