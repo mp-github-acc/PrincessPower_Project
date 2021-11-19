@@ -4,7 +4,7 @@
 class Dragon : public Spacecraft{
     public:
         Dragon();
-        ~Dragon(){};
+        ~Dragon();
         void sendCargo();
 };
 #endif

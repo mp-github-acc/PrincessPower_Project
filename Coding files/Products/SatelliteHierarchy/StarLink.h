@@ -1,3 +1,6 @@
+#ifndef STARLINK_H
+#define STARLINK_H
+
 #include <iostream>
 #include <list>
 using namespace std;
@@ -10,8 +13,8 @@ protected:
     int number;
 
 public:
-    StarLink() {}
-    virtual ~StarLink() {}
+    StarLink();
+    virtual ~StarLink();
     void setParent(StarLink *p);
     StarLink *getParent();
     void setNumber(int i);
@@ -21,23 +24,4 @@ public:
     virtual void remove();
     virtual void print() = 0;
 };
-
-class Satellite : public StarLink
-{
-public:
-    Satellite(){};
-    void print();
-};
-
-class Cluster : public StarLink
-{
-protected:
-    list<StarLink *> cluster_;
-
-public:
-    Cluster();
-    ~Cluster();
-    void add(StarLink *satellite);
-    void remove();
-    void print();
-};
+#endif
