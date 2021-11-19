@@ -8,6 +8,3 @@ FalconNine::FalconNine(){
 FalconNine::~FalconNine(){
     cout << "Falcon9Core grounded!" << endl;
 }
-// void Falcon9Core::addEngines(){
-//     cout << "Create engines for Falcon9Core..." << endl;
-// }

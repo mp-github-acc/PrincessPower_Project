@@ -8,6 +8,5 @@ public:
     FalconHeavyFactory();
     ~FalconHeavyFactory();
     Rocket *createRocket();
-    // void createRocket();
 };
 #endif

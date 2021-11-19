@@ -3,14 +3,14 @@
 #include <iostream>
 
 // // Satellites
-// #include "Satellite.h"
-// #include "Cluster.h"
-// #include "StarLink.h"
+#include "Satellite.h"
+#include "Cluster.h"
+#include "StarLink.h"
 
 // // Spacecraft
-// #include "Spacecraft.h"
-// #include "CrewDragon.h"
-// #include "Dragon.h"
+#include "Spacecraft.h"
+#include "CrewDragon.h"
+#include "Dragon.h"
 // #include "../Factories/SpacecraftFactory.h"
 // #include "../State/State.h"
 // #include "../SimulationState.h"
@@ -21,20 +21,20 @@ using namespace std;
 class Rocket
 {
 protected:
-    // Spacecraft* spacecraft_;
+    Spacecraft* spacecraft_;
     string rocketName;
-    // StarLink *satelliteCluster;
+    StarLink *satelliteCluster;
     // list<Engine*> engines;
     // State* state;
 public:
     Rocket();
     virtual ~Rocket();
-    // void setRocketName(string s);
-    // string getRocketName();
-    // void addSpacecraft();
-    // void addSatellites();
+    void setRocketName(string s);
+    string getRocketName();
+    void addSpacecraft(Spacecraft* s);
+    void addSatellites(int c);
     // // virtual void addEngines();
-    // bool buildComplete();
+    bool staticFire();
 
     // void checkOne();
     // void checkTwo();

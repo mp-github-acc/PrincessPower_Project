@@ -1,7 +1,8 @@
 #ifndef ROCKETFACTORY_H
 #define ROCKETFACTORY_H
-#include "../Products/FalconHeavy.h"
-#include "../Products/Rocket.h"
+#include "FalconHeavy.h"
+#include "FalconNine.h"
+#include "Rocket.h"
 #include <iostream>
 using namespace std;
 class RocketFactory
