@@ -73,3 +73,18 @@ bool Rocket::staticFire(){
     // check if the F9 has 9 Merlin engines and the Heavy has the other amount
     return true;
 }
+
+void Rocket::accelerate(){
+    cout << getRocketName() << " is now accelerating. Increasing fuel consumption." << endl;
+}
+
+void Rocket::decelerate(){
+    cout << getRocketName() << " is now decelerating. Decreasing fuel consumption." << endl;
+}
+
+void Rocket::ignite(){
+    cout << getRocketName() << " is now igniting. " << endl;
+}
+Spacecraft *Rocket::getSpacecraft(){
+    return this->spacecraft_;
+}

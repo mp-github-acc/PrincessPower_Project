@@ -9,8 +9,8 @@
 
 // // Spacecraft
 #include "Spacecraft.h"
-#include "CrewDragon.h"
-#include "Dragon.h"
+#include "SpacecraftCrewDragon.h"
+#include "SpacecraftDragon.h"
 // #include "../Factories/SpacecraftFactory.h"
 // #include "../State/State.h"
 // #include "../SimulationState.h"
@@ -35,15 +35,17 @@ public:
     void addSatellites(int c);
     // // virtual void addEngines();
     bool staticFire();
-
+    // Command
+    void accelerate();
+    void decelerate();
+    void ignite();
+    Spacecraft* getSpacecraft();
     // void checkOne();
     // void checkTwo();
     // // SimulationState* createSimState();
     // // SimulationState* getSimState();
     // void handleRequest();
     // void startEngine();
-    // void accelerate();
-    // void decelerate();
     // void staticFire();
 };
 #endif

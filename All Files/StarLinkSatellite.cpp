@@ -1,4 +1,4 @@
-#include "Satellite.h"
+#include "StarLinkSatellite.h"
 
 void Satellite::print()
 {

@@ -1,4 +1,4 @@
-#include "Cluster.h"
+#include "StarLinkCluster.h"
 Cluster::Cluster()
 {
     cout << "Adding satellite: ";

@@ -1,7 +1,7 @@
 #ifndef CLUSTER_H
 #define CLUSTER_H
 #include "StarLink.h"
-#include "Satellite.h"
+#include "StarLinkSatellite.h"
 class Cluster : public StarLink
 {
 protected:

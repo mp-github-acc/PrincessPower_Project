@@ -1,4 +1,4 @@
-#include "MerlinVacuumFactory.h"
+#include "EngineMerlinVacuumFactory.h"
 
 MerlinVacuumFactory::MerlinVacuumFactory() {}
 MerlinVacuumFactory::~MerlinVacuumFactory() {}

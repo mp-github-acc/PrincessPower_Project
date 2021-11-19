@@ -1,9 +1,9 @@
-#include "FalconHeavyFactory.h"
-#include "FalconNineFactory.h"
+#include "RocketFalconHeavyFactory.h"
+#include "RocketFalconNineFactory.h"
 #include "RocketFactory.h"
 #include "Rocket.h"
-#include "FalconNine.h"
-#include "FalconHeavy.h"
+#include "RocketFalconNine.h"
+#include "RocketFalconHeavy.h"
 
 #include "SpacecraftFactory.h"
 #include "CrewDragonFactory.h"
@@ -12,6 +12,8 @@
 #include "CrewDragon.h"
 #include "Dragon.h"
 
+
+#include "CommandControlCenter.h"
 #include <iostream>
 
 using namespace std;
@@ -54,6 +56,14 @@ int main(){
         cout << "Rocket is incomplete" << endl;
     }
     cout << endl;
+    if(!canContinue){
+        cout << "Rocket did not pass the satic fire test. Cannot proceed to simulation." << endl;
+    }
     cout << " ---------------------- Simulation ------------------------------- " << endl;
+    cout << "Simulation will start shortly." << endl;
+    // random generator stuffs
+    CommandControlCenter* controls = new CommandControlCenter(newRocket, newRocket->getSpacecraft());
+    controls->liftOff();
+    
     return 0;
 }
