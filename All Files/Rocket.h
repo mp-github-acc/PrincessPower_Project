@@ -2,9 +2,9 @@
 #define ROCKET_H
 #include <iostream>
 
-// // Satellites
-#include "Satellite.h"
-#include "Cluster.h"
+// Satellites
+#include "StarLinkSatellite.h"
+#include "StarLinkCluster.h"
 #include "StarLink.h"
 
 // // Spacecraft

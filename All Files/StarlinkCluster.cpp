@@ -32,3 +32,23 @@ void Cluster::print()
 {
     cout << "Composite" << endl;
 }
+
+// Observer
+void Cluster::attach(AbstractMissionControl *o)
+{
+    observerList.push_back(o);
+}
+void Cluster::detach(AbstractMissionControl *o)
+{
+    observerList.remove(o);
+}
+
+void Cluster::notify()
+{
+    // notify all the observers
+    list<AbstractMissionControl *>::iterator it = observerList.begin();
+    for (it = observerList.begin(); it != observerList.end(); ++it)
+    {
+        (*it)->update();
+    }
+}

@@ -6,11 +6,11 @@
 #include "RocketFalconHeavy.h"
 
 #include "SpacecraftFactory.h"
-#include "CrewDragonFactory.h"
-#include "DragonFactory.h"
+#include "SpacecraftCrewDragonFactory.h"
+#include "SpacecraftDragonFactory.h"
 #include "Spacecraft.h"
-#include "CrewDragon.h"
-#include "Dragon.h"
+#include "SpacecraftCrewDragon.h"
+#include "SpacecraftDragon.h"
 
 
 #include "CommandControlCenter.h"
