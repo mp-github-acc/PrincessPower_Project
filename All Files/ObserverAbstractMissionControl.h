@@ -1,17 +1,17 @@
 #ifndef ABSTRACTMISSIONCONTROL_H
 #define ABSTRACTMISSIONCONTROL_H
 
-#include "StarLinkCluster.h"
 #include <iostream>
 
 class AbstractMissionControl{
-    protected:
-        Cluster* subject;
+    // protected:
+    //     Cluster* subject;
     public:
         AbstractMissionControl();
-        ~AbstractMissionControl();
-        void registerSatellites(Cluster* c);
+        virtual ~AbstractMissionControl();
+        // void registerSatellites(Cluster* c);
         virtual void update() = 0;
+        virtual void print() = 0;
 };
 #endif
 

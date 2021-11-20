@@ -15,23 +15,33 @@
 // #include "../State/State.h"
 // #include "../SimulationState.h"
 // #include "Engine.h"
-#include <list>
+
+// Observer
+#include "ObserverAbstractMissionControl.h"
+#include "ObserverConcreteMissionControl.h"
+// Memento
+#include "State.h"
+#include "SimulationState.h" 
+
+// #include <list>
 using namespace std;
 
 class Rocket
 {
+private:
+    AbstractMissionControl* observer;
 protected:
-    Spacecraft* spacecraft_;
+    Spacecraft *spacecraft_;
     string rocketName;
     StarLink *satelliteCluster;
     // list<Engine*> engines;
-    // State* state;
+    State *currentState; // rename this to be more specific
 public:
     Rocket();
     virtual ~Rocket();
     void setRocketName(string s);
     string getRocketName();
-    void addSpacecraft(Spacecraft* s);
+    void addSpacecraft(Spacecraft *s);
     void addSatellites(int c);
     // // virtual void addEngines();
     bool staticFire();
@@ -39,7 +49,12 @@ public:
     void accelerate();
     void decelerate();
     void ignite();
-    Spacecraft* getSpacecraft();
+    void attach();
+    void dock();
+    Spacecraft *getSpacecraft();
+    // Observer
+    void implementObsever();
+    void setCondition(bool b);
     // void checkOne();
     // void checkTwo();
     // // SimulationState* createSimState();
@@ -47,5 +62,8 @@ public:
     // void handleRequest();
     // void startEngine();
     // void staticFire();
+
+    SimulationState *createMemento();
+    void setMemento(SimulationState *memento);
 };
 #endif

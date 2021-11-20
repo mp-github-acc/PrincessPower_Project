@@ -28,3 +28,31 @@ int StarLink::getTotal()
 }
 void StarLink::add(StarLink *satellite) {}
 void StarLink::remove() {}
+
+void StarLink::attach(AbstractMissionControl *o)
+{
+    observerList.push_back(o);
+}
+void StarLink::detach(AbstractMissionControl *o)
+{
+    observerList.remove(o);
+}
+
+void StarLink::notify()
+{
+    // notify all the observers
+    list<AbstractMissionControl *>::iterator it = observerList.begin();
+    for (it = observerList.begin(); it != observerList.end(); ++it)
+    {
+        (*it)->update();
+    }
+}
+
+
+bool StarLink::getState(){
+    return workingState;
+}
+
+void StarLink::setState(bool b){
+    workingState = b;
+}

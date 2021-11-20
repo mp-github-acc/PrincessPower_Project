@@ -1,12 +1,12 @@
 #include "ObserverAbstractMIssionControl.h"
 
 AbstractMissionControl::AbstractMissionControl(){
-    subject = new Cluster();
+    // subject = new Cluster();
 }
 
 AbstractMissionControl::~AbstractMissionControl(){
-    delete subject;
+    // delete subject;
 }
-void AbstractMissionControl::registerSatellites(Cluster *c){
-    subject = c;
-}
+// void AbstractMissionControl::registerSatellites(Cluster *c){
+//     subject = c;
+// }

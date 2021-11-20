@@ -3,8 +3,8 @@
 
 class Engine
 {
-public:
-    Engine();
-    ~Engine();
+    public:
+        Engine();
+        ~Engine();
 };
 #endif

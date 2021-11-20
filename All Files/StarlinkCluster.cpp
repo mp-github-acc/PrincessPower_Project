@@ -1,10 +1,11 @@
 #include "StarLinkCluster.h"
 Cluster::Cluster()
 {
-    cout << "Adding satellite: ";
-    while (getTotal() < 10)
+    cout << "Adding satellite: " << endl;
+    while (getTotal() < 60)
     {
-        add(new Satellite());
+        Satellite* s = new Satellite();
+        add(s);
     }
     cout << endl;
     cout << "Total: " << total << endl;
@@ -33,22 +34,6 @@ void Cluster::print()
     cout << "Composite" << endl;
 }
 
-// Observer
-void Cluster::attach(AbstractMissionControl *o)
-{
-    observerList.push_back(o);
-}
-void Cluster::detach(AbstractMissionControl *o)
-{
-    observerList.remove(o);
-}
 
-void Cluster::notify()
-{
-    // notify all the observers
-    list<AbstractMissionControl *>::iterator it = observerList.begin();
-    for (it = observerList.begin(); it != observerList.end(); ++it)
-    {
-        (*it)->update();
-    }
-}
+
+// Observer

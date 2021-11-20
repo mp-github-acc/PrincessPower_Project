@@ -44,6 +44,7 @@ int main(){
     }else{
         cout << newRocket->getRocketName() << " cannot take satellites." << endl;
     }
+    // engines as well
     cout << endl;
     cout << " ---------------------- Satic Fire ------------------------------- " << endl;
     bool canContinue;
@@ -63,7 +64,9 @@ int main(){
     cout << "Simulation will start shortly." << endl;
     // random generator stuffs
     CommandControlCenter* controls = new CommandControlCenter(newRocket, newRocket->getSpacecraft());
+    // Attach observers
     controls->liftOff();
-    
+    newRocket->implementObsever();
+    newRocket->setCondition(true);
     return 0;
 }

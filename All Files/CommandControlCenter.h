@@ -4,6 +4,8 @@
 #include "CommandAccelerate.h"
 #include "CommandIgnite.h"
 #include "CommandDecelerate.h"
+#include "CommandDock.h"
+#include "CommandAttach.h"
 
 class CommandControlCenter
 {
@@ -11,21 +13,10 @@ private:
     Command **commands;
 
 public:
-    CommandControlCenter(Rocket *r, Spacecraft *s)
-    {
-        commands = new Command *[3];
-        commands[0] = new CommandIgnite(r, s);
-        commands[1] = new CommandAccelerate(r, s);
-        commands[2] = new CommandDecelerate(r, s);
-    }
-    ~CommandControlCenter(){
-        delete commands[0];
-        delete commands[1];
-        delete commands[2];
-    }
-    void liftOff(){
-        commands[0]->execute();     // ignite 
-        commands[1]->execute();     // accelerate
-    }
+// need to create the two NEW commands like CommandAccelerate
+// add dock() and attach() to Rocket.h and implement them in rocket.cpp
+    CommandControlCenter(Rocket *r, Spacecraft *s);
+    ~CommandControlCenter();
+    void liftOff();
 };
 #endif

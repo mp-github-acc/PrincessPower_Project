@@ -2,11 +2,16 @@
 #define STARLINK_H
 
 #include <iostream>
+#include "ObserverAbstractMissionControl.h"
 #include <list>
 using namespace std;
 
 class StarLink
 {
+private:
+    list<AbstractMissionControl *> observerList;
+    private:
+    bool workingState;
 protected:
     StarLink *parent;
     int total;
@@ -23,5 +28,11 @@ public:
     virtual void add(StarLink *satellite);
     virtual void remove();
     virtual void print() = 0;
+    void attach(AbstractMissionControl *o);
+    void detach(AbstractMissionControl *o);
+    void notify();
+    // Observer
+    bool getState();
+    void setState(bool c);
 };
 #endif
