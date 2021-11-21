@@ -9,22 +9,18 @@ using namespace std;
 class SimulationState
 {
 protected:
-    State* state;
-    StateCaretaker* caretaker;
+    State *state;
+    StateCaretaker *caretaker;
 
-    void setStateCaretaker(State* s);
-    State* getStateCaretaker();
+    void setStateCaretaker(State *s);
+    State *getStateCaretaker();
 
 public:
     SimulationState();
     ~SimulationState();
 
-    State* getState();
-    void setState(State* s);
+    State *getState();
+    void setState(State *s);
     void beginSimulation();
-
-    
-
-
 };
 #endif

@@ -8,13 +8,13 @@ using namespace std;
 class StateCaretaker
 {
 protected:
-    State* state;
+    State *state;
 
 public:
     StateCaretaker();
     ~StateCaretaker();
 
-    void setStateCaretaker(State* s);
-    State* getStateCaretaker();
+    void setStateCaretaker(State *s);
+    State *getStateCaretaker();
 };
 #endif

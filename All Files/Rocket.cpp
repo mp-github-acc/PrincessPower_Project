@@ -55,8 +55,19 @@ bool Rocket::staticFire()
         cin >> hasSatellite;
         while (hasSatellite < 0 && hasSatellite > 1)
         {
-            cout << "\tShould rocket have satellites? 1 for Yes or 0 for No : ";
-            cin >> hasSatellite;
+            while (true)
+            {
+                if (hasSatellite == 1)
+                {
+                    cout << "\tShould rocket have satellites? 1 for Yes or 0 for No : ";
+                    cin >> hasSatellite;
+                }
+                if (hasSatellite == 0)
+                {
+                    cout << "\tShould rocket have satellites? 1 for Yes or 0 for No : ";
+                    cin >> hasSatellite;
+                }
+            }
         }
         if (hasSatellite == 1 && this->satelliteCluster != nullptr)
         { // yes and cluster exists
@@ -123,11 +134,13 @@ void Rocket::dock()
 }
 
 // Observer
-void Rocket::implementObsever(){
+void Rocket::implementObsever()
+{
     observer = new ConcreteMissionControl(satelliteCluster);
 }
 
-void Rocket::setCondition(bool b){
+void Rocket::setCondition(bool b)
+{
     satelliteCluster->setState(b);
     observer->update();
     observer->print();

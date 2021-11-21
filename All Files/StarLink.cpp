@@ -29,8 +29,11 @@ int StarLink::getTotal()
 void StarLink::add(StarLink *satellite) {}
 void StarLink::remove() {}
 
+
+// Observers
 void StarLink::attach(AbstractMissionControl *o)
 {
+    cout << "Attaching obsever" << endl;
     observerList.push_back(o);
 }
 void StarLink::detach(AbstractMissionControl *o)
@@ -41,6 +44,7 @@ void StarLink::detach(AbstractMissionControl *o)
 void StarLink::notify()
 {
     // notify all the observers
+    cout <<"Going to notify " << observerList.size() << "observers" << endl;
     list<AbstractMissionControl *>::iterator it = observerList.begin();
     for (it = observerList.begin(); it != observerList.end(); ++it)
     {

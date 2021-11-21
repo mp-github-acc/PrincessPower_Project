@@ -28,10 +28,10 @@ public:
     virtual void add(StarLink *satellite);
     virtual void remove();
     virtual void print() = 0;
+    // Observer
     void attach(AbstractMissionControl *o);
     void detach(AbstractMissionControl *o);
     void notify();
-    // Observer
     bool getState();
     void setState(bool c);
 };

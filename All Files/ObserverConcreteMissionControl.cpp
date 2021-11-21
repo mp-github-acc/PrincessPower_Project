@@ -4,6 +4,7 @@ ConcreteMissionControl::ConcreteMissionControl(StarLink *c)
 {
     subject = c;
     subject->setState(false);
+    subject->attach(this);
 }
 
 ConcreteMissionControl::~ConcreteMissionControl()
@@ -13,6 +14,7 @@ ConcreteMissionControl::~ConcreteMissionControl()
 
 void ConcreteMissionControl::update()
 {
+    cout << "Observer is being updated from: " << observerState << " to " << subject->getState() << endl;
     observerState = subject->getState();
 }
 
