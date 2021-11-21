@@ -3,23 +3,23 @@
 //MEMENTO
 #include <iostream>
 using namespace std;
-// #include "State.h"
-// #include "StateCaretaker.h"
+#include "StateRocket.h"
+
 
 class SimulationState
 {
 protected:
-    // State *state;
-    // StateCaretaker *caretaker;
-    // void setStateCaretaker(State *s);
-    // State *getStateCaretaker();
+    StateRocket *Rstate;
+    // friend class Rocket();
+    // SimulationState(string n);
 
 public:
     SimulationState();
-    ~SimulationState();
+    SimulationState(string n, string s, bool b, string st);
+    virtual ~SimulationState();
 
-    // State *getState();
-    // void setState(State *s);
+    StateRocket *getRState();
+    void setRState(StateRocket *s);
     // void beginSimulation();
 };
 #endif

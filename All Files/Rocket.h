@@ -34,6 +34,7 @@
 // #include <list>
 using namespace std;
 
+
 class Rocket
 {
 private:
@@ -56,7 +57,7 @@ public:
     string getRocketName();
     void addSpacecraft(Spacecraft *s);
     void addSatellites(int c);
-    virtual void addEngine();
+    virtual void addEngine()=0;
     bool staticFire();
     // Command
     void accelerate();
@@ -78,13 +79,13 @@ public:
     virtual void setNext(Rocket* r) = 0;
     // void checkOne();
     // void checkTwo();
-    // // SimulationState* createSimState();
-    // // SimulationState* getSimState();
+
     // void handleRequest();
     // void startEngine();
     // void staticFire();
 
-    // SimulationState *createMemento();
-    // void setMemento(SimulationState *memento);
+    SimulationState *createMemento();
+    void makeMemento(SimulationState *m);
+    
 };
 #endif

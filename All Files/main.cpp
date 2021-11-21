@@ -14,7 +14,9 @@
 
 #include "CommandControlCenter.h"
 #include <iostream>
+
 //Princess power!
+
 using namespace std;
 
 int main()
@@ -123,10 +125,14 @@ int main()
     // newRocket->implementObsever();
     // newRocket->setCondition(true);
     // State
+
+    
     newRocket->changeStage();
     newRocket->changeStage();
     newRocket->changeStage();
     newRocket->changeStage();
+    // SimulationState* temp=newRocket->createMemento();
+    // newRocket->makeMemento(temp);
     
     return 0;
 }

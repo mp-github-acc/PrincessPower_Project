@@ -188,28 +188,26 @@ void Rocket::changeStage()
     }
 }
 
-// SimulationState *Rocket::createMemento()
-// {
-//     // SimulationState *m = new SimulationState();
-//     // m->setState(currentState);0]
-//     // return m;
-//     return nullptr;
-// }
 
-// void Rocket::setMemento(SimulationState *memento)
-// {
-//     // this->currentState = memento->getState();
-// }
-void Rocket::addEngine()
+
+
+SimulationState *Rocket::createMemento()
 {
-    // int choice;
-    // cout << "What engine would you like to add? 1 for blah blah 2 for blah" << endl;
-    // cin >> choice;
-    // if (choice == 1){
-    //     //this->engines.push_back();//how many and what
-    // }else if (choice == 2){
-    //     //this->engines.push_back();
-    // }else{
-    //     cout<< "That is not a valid choice" << endl;
-    // }
+    bool b = (satelliteCluster==nullptr) ? false : true;
+
+    SimulationState *m = new SimulationState(rocketName, spacecraft_->getName(), b, currentStage->getCurrentState());
+    // SimulationState *m = new SimulationState(rocketName, spacecraft_->getName(), b, "grounded");
+    
+//     // m->setState(currentState);
+//     // return m;
+    return m;
 }
+
+void Rocket::makeMemento(SimulationState *m)
+{
+    StateRocket *sr=m->getRState();
+    //=====================================================================
+
+    // cout<<sr->getName();
+}
+

@@ -1,25 +1,24 @@
 #include "SimulationState.h"
 
 SimulationState::SimulationState(){
-    cout<<"Created SimulationState"<<endl;
+    // cout<<"Created SimulationState"<<endl;
 }
 SimulationState::~SimulationState(){
-    cout<<"Deleted SimulationState"<<endl;
+    // cout<<"Deleted SimulationState"<<endl;
 }
 
-// State* SimulationState::getState(){
-//     return this->state;
-// }
-// void SimulationState::setState(State* s){
-//     this->state=s;
-// }
-// void SimulationState::beginSimulation(){
-//     cout<<"Beginning simulation"<<endl;
+// SimulationState::SimulationState(string n){
+
 // }
 
-// void SimulationState::setStateCaretaker(State* s){
-//     this->caretaker->setStateCaretaker(s);
-// }
-// State* SimulationState::getStateCaretaker(){
-//     return this->caretaker->getStateCaretaker();
-// }
+StateRocket* SimulationState::getRState(){
+    return Rstate;
+}
+
+void SimulationState::setRState(StateRocket *s){
+    Rstate=s;
+}
+
+SimulationState::SimulationState(string n, string s, bool b, string st){
+    Rstate=new StateRocket(n,s,b, st);
+}

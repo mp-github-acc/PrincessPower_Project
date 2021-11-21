@@ -3,26 +3,20 @@
 
 #include <iostream>
 using namespace std;
-#include "State.h"
+#include "Rocket.h"
 #include "SimulationState.h"
 
 class StateCaretaker
 {
 protected:
-    State *state;
-    // State* state;
-    // SimulationState* ss;
+    SimulationState* simState;
 
 public:
     StateCaretaker();
     ~StateCaretaker();
 
-    // void setStateCaretaker(State *s);
-    // State *getStateCaretaker();
-    // void setStateCaretaker(State* s);
-    // State* getStateCaretaker();
+    void store(SimulationState* s);
+    SimulationState* retrieveState();
 
-    // void setStateCaretaker(SimulationState* s);
-    // SimulationState* getStateCaretaker();
 };
 #endif

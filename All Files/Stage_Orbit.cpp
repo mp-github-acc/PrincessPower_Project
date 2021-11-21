@@ -13,5 +13,6 @@ void Stage_Orbit::handle()
 }
 
 State *Stage_Orbit::changeState(){
-    return NULL;
+    cout<<"Rocket is already in orbit"<<endl;
+    return new Stage_Orbit();
 }
