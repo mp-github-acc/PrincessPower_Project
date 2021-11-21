@@ -23,7 +23,7 @@
 #include "ObserverAbstractMissionControl.h"
 #include "ObserverConcreteMissionControl.h"
 // Memento
-#include "SimulationState.h" 
+#include "SimulationState.h"
 
 // State
 #include "State.h"
@@ -37,13 +37,18 @@ using namespace std;
 class Rocket
 {
 private:
-    AbstractMissionControl* observer;
+    AbstractMissionControl *observer;
+
 protected:
     Spacecraft *spacecraft_;
     string rocketName;
     StarLink *satelliteCluster;
-    list<Engine*> engines;
+    list<Engine *> engines;
     State *currentStage; // rename this to be more specific
+    EngineFactory **engineFactory;
+
+    Rocket *succesor;
+
 public:
     Rocket();
     virtual ~Rocket();
@@ -65,8 +70,12 @@ public:
     void setCondition(bool b);
 
     // State
-    void addState(State* s);
+    void addState(State *s);
     void changeStage();
+
+    // Chain of Responsibility
+    virtual void handleRequest(string n) = 0;
+    virtual void setNext(Rocket* r) = 0;
     // void checkOne();
     // void checkTwo();
     // // SimulationState* createSimState();

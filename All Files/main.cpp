@@ -33,42 +33,47 @@ int main()
     cout << "Welcome to Rocket construction" << endl;
     while (true)
     {
-
-        cout << "Choose a Rocket: 1 = Falcon9, 2 = Falcon Heavy - ";
+        cout << "Choose a Rocket: 0 = Falcon9, 1 = Falcon Heavy - ";
         cin >> choice;
+        if (choice == 0)
+        {
+            break;
+        }
         if (choice == 1)
         {
             break;
         }
-        if (choice == 2)
-        {
-            break;
-        }
     }
+/*
+    choice = 0; [0] 
+    other = 1 - choice = 1; [1]
 
+    choice = 1; [1]
+    other = 1 - choice = 0 [0]
+*/
     // Rocket creation
-    Rocket *newRocket = rFactory[choice - 1]->createRocket();
+    Rocket *newRocket = rFactory[choice]->createRocket();
+    newRocket->setNext(rFactory[1 - choice]->createRocket()); 
     while (true)
     {
 
-        cout << "Choose a spacecraft: 1 = CrewDragon, 2 = Dragon - ";
+        cout << "Choose a spacecraft: 0 = CrewDragon, 1 = Dragon - ";
         cin >> choice;
+        if (choice == 0)
+        {
+            break;
+        }
         if (choice == 1)
         {
             break;
         }
-        if (choice == 2)
-        {
-            break;
-        }
     }
-    newRocket->addSpacecraft(sFactory[choice - 1]->createSpacecraft());
+    newRocket->addSpacecraft(sFactory[choice]->createSpacecraft());
     // Satellites:
     if (newRocket->getRocketName() == "Falcon 9")
     {
         while (true)
         {
-
             cout << "Do you want satellites: 1 = yes, 0 = no - ";
             cin >> choice;
             if (choice == 1 || choice == 0)
@@ -76,7 +81,6 @@ int main()
                 break;
             }
         }
-
         newRocket->addSatellites(choice);
     }
     else
@@ -84,6 +88,11 @@ int main()
         cout << newRocket->getRocketName() << " cannot take satellites." << endl;
     }
     // engines as well
+
+    cout << "Adding engines to " << newRocket->getRocketName()  << endl;
+    newRocket->addEngine();
+
+
     cout << endl;
     cout << " ---------------------- Static Fire ------------------------------- " << endl;
     bool canContinue;
@@ -103,19 +112,21 @@ int main()
     {
         cout << "Rocket did not pass the static fire test. Cannot proceed to simulation." << endl;
     }
-    // newRocket->addEngines()
     cout << " ---------------------- Simulation ------------------------------- " << endl;
     cout << "Simulation will start shortly." << endl;
     // random generator stuffs
     CommandControlCenter *controls = new CommandControlCenter(newRocket, newRocket->getSpacecraft());
     // Attach observers
     controls->liftOff();
-    newRocket->implementObsever();
-    newRocket->setCondition(true);
+    // need this to be conditional 
+    newRocket->handleRequest(newRocket->getRocketName());
+    // newRocket->implementObsever();
+    // newRocket->setCondition(true);
     // State
     newRocket->changeStage();
     newRocket->changeStage();
     newRocket->changeStage();
     newRocket->changeStage();
+    
     return 0;
 }

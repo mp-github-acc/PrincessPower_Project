@@ -5,7 +5,11 @@ Rocket::Rocket()
     cout << "Constructing rocket" << endl;
     // spacecraft_ = nullptr;
     satelliteCluster = nullptr;
+    // state
     currentStage = new Stage_Grounded();
+    engineFactory = new EngineFactory *[2];
+    engineFactory[0] = new MerlinFactory();
+    engineFactory[1] = new MerlinVacuumFactory();
 }
 Rocket::~Rocket()
 {
@@ -29,7 +33,6 @@ void Rocket::addSpacecraft(Spacecraft *s)
 
 void Rocket::addSatellites(int c)
 {
-
     if (c == 1)
     {
         // add satellites
@@ -43,7 +46,7 @@ void Rocket::addSatellites(int c)
         satelliteCluster = nullptr;
     }
 }
-// // // could be a template method
+// template method
 bool Rocket::staticFire()
 {
     // Get name of rocket
@@ -137,7 +140,18 @@ void Rocket::dock()
 // Observer
 void Rocket::implementObsever()
 {
-    observer = new ConcreteMissionControl(satelliteCluster);
+    if (this->satelliteCluster != NULL)
+    {
+
+        observer = new ConcreteMissionControl(satelliteCluster);
+        cout << "\tSatellites are being observed" << endl;
+    }
+    else
+    {
+        cout << "\tFalcon 9 has no satellites to observe" << endl;
+    }
+
+    // handleRequest();
 }
 
 void Rocket::setCondition(bool b)
@@ -177,7 +191,7 @@ void Rocket::changeStage()
 // SimulationState *Rocket::createMemento()
 // {
 //     // SimulationState *m = new SimulationState();
-//     // m->setState(currentState);
+//     // m->setState(currentState);0]
 //     // return m;
 //     return nullptr;
 // }
