@@ -5,6 +5,7 @@ Rocket::Rocket()
     cout << "Constructing rocket" << endl;
     // spacecraft_ = nullptr;
     satelliteCluster = nullptr;
+    currentStage = new Stage_Grounded();
 }
 Rocket::~Rocket()
 {
@@ -146,14 +147,55 @@ void Rocket::setCondition(bool b)
     observer->print();
 }
 
-SimulationState *Rocket::createMemento()
+// State
+void Rocket::addState(State *s)
 {
-    SimulationState *m = new SimulationState();
-    m->setState(currentState);
-    return m;
+    this->currentStage = s;
 }
 
-void Rocket::setMemento(SimulationState *memento)
+void Rocket::changeStage()
 {
-    this->currentState = memento->getState();
+    this->currentStage->handle();
+    if (this->currentStage->getCurrentState() == "Grounded")
+    {
+        this->currentStage = this->currentStage->changeState();
+    }
+    else if (this->currentStage->getCurrentState() == "Lift Off")
+    {
+        this->currentStage = this->currentStage->changeState();
+    }
+    else if (this->currentStage->getCurrentState() == "Low Orbit")
+    {
+        this->currentStage = this->currentStage->changeState();
+    }
+    else if (this->currentStage->getCurrentState() == "High Orbit")
+    {
+        this->currentStage = this->currentStage->changeState();
+    }
+}
+
+// SimulationState *Rocket::createMemento()
+// {
+//     // SimulationState *m = new SimulationState();
+//     // m->setState(currentState);
+//     // return m;
+//     return nullptr;
+// }
+
+// void Rocket::setMemento(SimulationState *memento)
+// {
+//     // this->currentState = memento->getState();
+// }
+void Rocket::addEngine()
+{
+    // int choice;
+    // cout << "What engine would you like to add? 1 for blah blah 2 for blah" << endl;
+    // cin >> choice;
+    // if (choice == 1){
+    //     //this->engines.push_back();//how many and what
+    // }else if (choice == 2){
+    //     //this->engines.push_back();
+    // }else{
+    //     cout<< "That is not a valid choice" << endl;
+    // }
 }

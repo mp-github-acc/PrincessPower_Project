@@ -2,6 +2,7 @@
 #define MERLINVACUUMFACTORY_H
 
 #include "EngineFactory.h"
+#include "EngineMerlinVacuum.h"
 
 class MerlinVacuumFactory : public EngineFactory
 {

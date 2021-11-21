@@ -1,21 +1,20 @@
 #ifndef STATE_H
 #define STATE_H
-using namespace std;
+// #include <string>
 #include <iostream>
-#include <string>
+using namespace std;
 
-class State{
-    protected:
+class State
+{
+protected:
     string currentState;
 
-    public:
-        virtual void handle();//=0
-
-        State* changeCurrentState(string cs);
-        string getCurrentState();
-
-        State(string cs);
-        ~State();
-        
+public:
+    State();
+    virtual ~State();
+    virtual void handle() = 0;
+    virtual State *changeState() = 0;
+    string getCurrentState();
+    
 };
 #endif

@@ -1,20 +1,15 @@
+#ifndef STAGE_ONE_H
+#define STAGE_ONE_H
+
 #include "State.h"
+#include "Stage_Two.h"
 
-#ifndef STAGEONE_H
-#define STAGEONE_H
-#include "State.h"
-#include "State_Orbit.h"
-#include "State_Grounded.h"
-#include "State_StageTwo.h"
-
-class State_StageOne : public State{
-
-    public:
-    State_StageOne();
-    ~State_StageOne();
+class Stage_One : public State
+{
+public:
+    Stage_One();
+    ~Stage_One();
     void handle();
-    State* changeState();
-    
+    State *changeState();
 };
-
-#endif 
+#endif

@@ -1,11 +1,13 @@
 #include "State.h"
 
-void State::handle(){
-    cout<<"wrong handle func"<<endl;
+State::State()
+{
+
 }
-
-State* changeCurrentState(string cs);
-string getCurrentState();
-
-State(string cs);
-~State();
+State::~State()
+{
+    // nothing here
+}
+string State::getCurrentState(){
+    return this->currentState;
+}

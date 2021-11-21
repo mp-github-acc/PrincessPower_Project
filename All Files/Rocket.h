@@ -14,15 +14,23 @@
 // #include "../Factories/SpacecraftFactory.h"
 // #include "../State/State.h"
 // #include "../SimulationState.h"
-// #include "Engine.h"
+
+//Engine
+#include "EngineMerlinFactory.h"
+#include "EngineMerlinVacuumFactory.h"
 
 // Observer
 #include "ObserverAbstractMissionControl.h"
 #include "ObserverConcreteMissionControl.h"
 // Memento
-#include "State.h"
 #include "SimulationState.h" 
 
+// State
+#include "State.h"
+#include "Stage_Grounded.h"
+#include "Stage_One.h"
+#include "Stage_Two.h"
+#include "Stage_Orbit.h"
 // #include <list>
 using namespace std;
 
@@ -34,8 +42,8 @@ protected:
     Spacecraft *spacecraft_;
     string rocketName;
     StarLink *satelliteCluster;
-    // list<Engine*> engines;
-    State *currentState; // rename this to be more specific
+    list<Engine*> engines;
+    State *currentStage; // rename this to be more specific
 public:
     Rocket();
     virtual ~Rocket();
@@ -43,7 +51,7 @@ public:
     string getRocketName();
     void addSpacecraft(Spacecraft *s);
     void addSatellites(int c);
-    // // virtual void addEngines();
+    virtual void addEngine();
     bool staticFire();
     // Command
     void accelerate();
@@ -55,6 +63,10 @@ public:
     // Observer
     void implementObsever();
     void setCondition(bool b);
+
+    // State
+    void addState(State* s);
+    void changeStage();
     // void checkOne();
     // void checkTwo();
     // // SimulationState* createSimState();
@@ -63,7 +75,7 @@ public:
     // void startEngine();
     // void staticFire();
 
-    SimulationState *createMemento();
-    void setMemento(SimulationState *memento);
+    // SimulationState *createMemento();
+    // void setMemento(SimulationState *memento);
 };
 #endif

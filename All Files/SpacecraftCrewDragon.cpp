@@ -6,5 +6,5 @@ CrewDragon::CrewDragon(){
 CrewDragon::~CrewDragon(){}
 
 void CrewDragon::sendCargo(){
-    cout << "Mense as well" << endl;
+    cout << "Sending people to space" << endl;
 }

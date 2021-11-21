@@ -1,15 +1,18 @@
-#include "State_StageOne.h"
+#include "Stage_One.h"
 
-
-State_StageOne::State_StageOne(){
-
+Stage_One::Stage_One()
+{
+    this->currentState = "Lift Off";
 }
-State_StageOne::~State_StageOne(){
-
+Stage_One::~Stage_One()
+{
 }
-void State_StageOne::handle(){
-
+void Stage_One::handle()
+{
+    cout << "Rocket is taking off" << endl;
 }
-State* State_StageOne::changeState(){
-    return new State_StageTwo();
+State *Stage_One::changeState()
+{
+    State* nextStage = new Stage_Two();
+    return nextStage;
 }

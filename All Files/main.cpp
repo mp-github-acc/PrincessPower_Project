@@ -101,8 +101,9 @@ int main()
     cout << endl;
     if (!canContinue)
     {
-        cout << "Rocket did not pass the satic fire test. Cannot proceed to simulation." << endl;
+        cout << "Rocket did not pass the static fire test. Cannot proceed to simulation." << endl;
     }
+    // newRocket->addEngines()
     cout << " ---------------------- Simulation ------------------------------- " << endl;
     cout << "Simulation will start shortly." << endl;
     // random generator stuffs
@@ -111,5 +112,10 @@ int main()
     controls->liftOff();
     newRocket->implementObsever();
     newRocket->setCondition(true);
+    // State
+    newRocket->changeStage();
+    newRocket->changeStage();
+    newRocket->changeStage();
+    newRocket->changeStage();
     return 0;
 }

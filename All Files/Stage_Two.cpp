@@ -1,15 +1,18 @@
-#include "State_StageTwo.h"
+#include "Stage_Two.h"
 
-
-State_StageTwo::State_StageTwo(){
-
+Stage_Two::Stage_Two()
+{
+    this->currentState = "Low Orbit";
 }
-State_StageTwo::~State_StageTwo(){
-
+Stage_Two::~Stage_Two()
+{
 }
-void State_StageTwo::handle(){
-
+void Stage_Two::handle()
+{
+    cout << "Rocket has reached low orbit" << endl;
 }
-State* State_StageTwo::changeState(){
-    return new State_Orbit();
+State *Stage_Two::changeState()
+{
+    State* nextStage = new Stage_Orbit();
+    return nextStage;
 }

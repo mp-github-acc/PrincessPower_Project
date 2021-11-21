@@ -1,7 +1,7 @@
 #ifndef ENGINEFACTORY_H
 #define ENGINEFACTORY_H
-#include "EngineMerlin.h"
-#include "EngineMerlinVacuum.h"
+
+#include "Engine.h"
 
 class EngineFactory{
     private:

@@ -7,6 +7,9 @@ using namespace std;
 #include "State.h"
 #include "SimulationState.h" 
 
+//Crew Dragon - humans and cargo
+//Dragon - cargo only
+
 class Spacecraft
 {
 protected:
@@ -21,8 +24,8 @@ public:
     virtual void sendCargo() = 0;
     void setName(string n);
     // Memento
-    SimulationState* createMemento();
-    void setMemento(SimulationState* memento);
+    // SimulationState* createMemento();
+    // void setMemento(SimulationState* memento);
     
 };
 #endif
