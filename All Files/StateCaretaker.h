@@ -3,18 +3,23 @@
 
 #include <iostream>
 using namespace std;
-#include "State.h"
+// #include "State.h"
+#include "SimulationState.h"
 
 class StateCaretaker
 {
 protected:
-    State* state;
+    // State* state;
+    // SimulationState* ss;
 
 public:
     StateCaretaker();
     ~StateCaretaker();
 
-    void setStateCaretaker(State* s);
-    State* getStateCaretaker();
+    // void setStateCaretaker(State* s);
+    // State* getStateCaretaker();
+
+    // void setStateCaretaker(SimulationState* s);
+    // SimulationState* getStateCaretaker();
 };
 #endif
