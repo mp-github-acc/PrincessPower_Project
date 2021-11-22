@@ -21,3 +21,4 @@ To run program:
 - follow prompts to build, simulate and launch rockets
 
 
+"Final Submission/Data" folder contains diagrams, vpp files and pdfs of the diagrams
