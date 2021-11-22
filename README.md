@@ -21,6 +21,6 @@ To run program:
 - follow prompts to build, simulate and launch rockets
 
 
-"Final Submission/Data" folder contains diagrams, vpp files and pdfs of the diagrams
-"Final Submission/System" folder contains .h and .cpp files as well as makefile
-
+- "Final Submission/Data" folder contains diagrams, vpp files and pdfs of the diagrams
+- "Final Submission/System" folder contains .h and .cpp files as well as makefile
+- "Final Submission/Report" folder contains our report
