@@ -140,7 +140,7 @@ int main()
 
             cout << " ---------------------- Simulation ------------------------------- " << endl;
             cout << "Simulation will start shortly." << endl;
-            cout << "Require observers:\t";
+            
 
             SimulationState *memento = newRocket->createMemento();
             StateCaretaker care;
