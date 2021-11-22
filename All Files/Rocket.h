@@ -86,6 +86,8 @@ public:
 
     SimulationState *createMemento();
     void makeMemento(SimulationState *m);
+
+    void printInformation();
     
 };
 #endif

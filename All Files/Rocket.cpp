@@ -197,17 +197,67 @@ SimulationState *Rocket::createMemento()
 
     SimulationState *m = new SimulationState(rocketName, spacecraft_->getName(), b, currentStage->getCurrentState());
     // SimulationState *m = new SimulationState(rocketName, spacecraft_->getName(), b, "grounded");
-    
-//     // m->setState(currentState);
-//     // return m;
+
     return m;
 }
 
 void Rocket::makeMemento(SimulationState *m)
 {
     StateRocket *sr=m->getRState();
+    bool b=sr->getBool();
+    string n=sr->getName();
+    string sc=sr->getSpacecraft();
+    string st=sr->getStage();
+    //engines
+    
+    //
+
+    delete spacecraft_;
+    if ( sc=="Crew Dragon")
+        spacecraft_= new CrewDragon();
+    else
+        spacecraft_=new Dragon();
+    
+    //
+
+    delete currentStage;    
+    if(currentStage->getCurrentState()=="grounded")
+        currentStage = new Stage_Grounded();
+    else if(currentStage->getCurrentState()=="stage one")
+        currentStage=new Stage_One();
+    else if(currentStage->getCurrentState()=="stage two")
+        currentStage=new Stage_Two();
+    else
+        currentStage=new Stage_Orbit();
+
+    //
+        
+    if(n=="Falcon Heavy"){
+        //build engines
+    }
+    else{
+        //build engines
+    }
+
+    //
+
+    if(b==false)
+        satelliteCluster=nullptr;
+    else{
+        //build satellites
+    }
+
     //=====================================================================
 
-    // cout<<sr->getName();
+    
 }
 
+void Rocket::printInformation(){
+    cout<<""<<endl;
+    cout<<""<<endl;
+    cout<<""<<endl;
+    cout<<""<<endl;
+    cout<<""<<endl;
+    cout<<""<<endl;
+    cout<<""<<endl;
+}

@@ -15,6 +15,11 @@
 #include "CommandControlCenter.h"
 #include <iostream>
 
+#include "StateCaretaker.h"
+#include "SimulationState.h"
+#include "StateRocket.h"
+
+
 //Princess power!
 
 using namespace std;
@@ -126,13 +131,17 @@ int main()
     // newRocket->setCondition(true);
     // State
 
+    SimulationState* memento=newRocket->createMemento();
+    StateCaretaker care;
+    care.store(memento);
     
     newRocket->changeStage();
     newRocket->changeStage();
     newRocket->changeStage();
     newRocket->changeStage();
-    // SimulationState* temp=newRocket->createMemento();
-    // newRocket->makeMemento(temp);
+
+    SimulationState* temp=care.retrieveState();
+    newRocket->makeMemento(temp);
     
     return 0;
 }
