@@ -184,12 +184,7 @@ void Rocket::setCondition(bool b)
     observer->update();
     observer->print();
 }
-// bool Rocket::setCondition(bool b)
-// {
-//     satelliteCluster->setState(b);
-//     observer->update();
-//     observer->print();
-// }
+
 
 // State
 void Rocket::addState(State *s)
@@ -227,7 +222,11 @@ SimulationState *Rocket::createMemento()
 
     return m;
 }
-
+void Rocket::deploySatellites(){
+    if(satelliteCluster != NULL){
+        satelliteCluster->deploy();
+    }
+}
 void Rocket::makeMemento(SimulationState *m)
 {
     StateRocket *sr = m->getRState();
@@ -237,6 +236,7 @@ void Rocket::makeMemento(SimulationState *m)
     string st = sr->getStage();
     //engines
 
+    // cout<<"!!!!!!!!\t\t\t\t\t\t"<<st<<endl;
     //
 
     delete spacecraft_;
@@ -248,14 +248,26 @@ void Rocket::makeMemento(SimulationState *m)
     //
 
     delete currentStage;
-    if (currentStage->getCurrentState() == "Grounded")
+    if (st == "Grounded"){
+        // cout<<"!!!!!!!!\t\t\t\t\t\t GROUNDEDDDDDDDDD"<<endl;
         currentStage = new Stage_Grounded();
-    else if (currentStage->getCurrentState() == "Lift Off")
+    }
+        
+    else if (st == "Lift Off"){
+        // cout<<"!!!!!!!!\t\t\t\t\t\t LOWWWWWWWWW ORBIT"<<endl;
         currentStage = new Stage_One();
-    else if (currentStage->getCurrentState() == "High Orbit")
+    }
+        
+    else if (st == "High Orbit"){
+        // cout<<"!!!!!!!!\t\t\t\t\t\t HIGHHHHHHH ORBIT"<<endl;
         currentStage = new Stage_Two();
-    else
+    }
+        
+    else{
+        // cout<<"!!!!!!!!\t\t\t\t\t\tSTAGEE ORBIT"<<endl;
         currentStage = new Stage_Orbit();
+    }
+        
 
     // list<Engine *>::iterator it = engines.begin();
     cout << "Deleting " << engines.size() << " engines " << endl;

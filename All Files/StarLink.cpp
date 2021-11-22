@@ -31,7 +31,9 @@ void StarLink::add(StarLink *satellite) {
 }
 void StarLink::remove() {}
 
-
+void StarLink::deploy(){
+    cout << "Hi "<< endl;
+}
 // Observers
 void StarLink::attach(AbstractMissionControl *o)
 {

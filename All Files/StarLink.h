@@ -25,6 +25,7 @@ public:
     void setNumber(int i);
     int getNumber();
     int getTotal();
+    virtual void deploy() = 0;
     virtual void add(StarLink *satellite);
     virtual void remove();
     virtual void print() = 0;

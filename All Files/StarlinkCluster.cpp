@@ -37,6 +37,12 @@ void Cluster::print()
     cout << "Composite" << endl;
 }
 
+void Cluster::deploy(){
+    list<StarLink*>::iterator it = cluster_.begin();
+    cout << "Deploying satellite:" << endl;
+    for(; it != cluster_.end() ; ++it){
+        cout << (*it)->getNumber() << " ";
+    }
+}
 
 
-// Observer

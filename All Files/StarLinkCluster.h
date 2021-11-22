@@ -17,6 +17,6 @@ public:
     void remove();
     void print();
     Satellite *getSatellite();
-    
+    void deploy();
 };
 #endif

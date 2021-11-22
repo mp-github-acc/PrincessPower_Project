@@ -26,6 +26,7 @@
 
 using namespace std;
 
+
 int main()
 {
     cout << "\n================ WELCOME TO THE PRINCESS POWER ROCKET SIMULATION ================\n " << endl;
@@ -132,6 +133,12 @@ int main()
         cout << "Simulation will start shortly." << endl;
         cout << "Require observers:\t";
 
+        SimulationState *memento = newRocket->createMemento();
+        StateCaretaker care;
+        care.store(memento);
+
+        newRocket->printInformation();
+
         CommandControlCenter *controls = new CommandControlCenter(newRocket, newRocket->getSpacecraft());
         cout << "--------------------" << endl;
         newRocket->changeStage();
@@ -141,13 +148,11 @@ int main()
         cout << "--------------------" << endl;
         newRocket->changeStage();
         cout << "--------------------" << endl;
+
         // Memento
         newRocket->printInformation();
 
-        SimulationState *memento = newRocket->createMemento();
-        StateCaretaker care;
-        care.store(memento);
-        newRocket->printInformation();
+        
 
         SpaceStation *spacestation = new SpaceStation();
 
@@ -155,6 +160,8 @@ int main()
         newRocket->changeStage();
         // Attach observers
         newRocket->handleRequest(newRocket->getRocketName(), true);
+        newRocket->deploySatellites();
+        cout << endl;
         cout << "--------------------" << endl;
         cout << "--------------------" << endl;
         newRocket->changeStage();
@@ -185,33 +192,79 @@ int main()
         SimulationState *temp = care.retrieveState();
         newRocket->makeMemento(temp);
         // newRocket->printInformation();
+
+        newRocket->printInformation();
+
+        batch.push_back(newRocket);
+
+
     }
 
-    if(!batch.empty())
+    if (!batch.empty())
     {
         //can launch
-        cout<< "can launch"<<endl;
-        Rocket* launchRocket;
-        launchRocket=batch.front();
+        cout << "\n\n\n\n---LAUNCH SEQUENCE---" << endl;
+        Rocket *launchRocket;
+        launchRocket = batch.front();
         batch.pop_front();
 
-        launchRocket->getRocketName();
+        launchRocket->printInformation();
 
+        CommandControlCenter *contr = new CommandControlCenter(launchRocket, launchRocket->getSpacecraft());
+        cout << "--------------------" << endl;
+        launchRocket->changeStage();
+        cout << "--------------------" << endl;
+        contr->liftOff();
+        cout << "--------------------" << endl;
+        cout << "--------------------" << endl;
+        launchRocket->changeStage();
+        cout << "--------------------" << endl;
+        // Memento
+        launchRocket->printInformation();
+
+        SimulationState *memento = launchRocket->createMemento();
+        StateCaretaker care;
+        care.store(memento);
+        launchRocket->printInformation();
+
+        SpaceStation *spacestation = new SpaceStation();
+
+        cout << "--------------------" << endl;
+        launchRocket->changeStage();
+        // Attach observers
+        launchRocket->handleRequest(launchRocket->getRocketName(), true);
+        cout << "--------------------" << endl;
+        cout << "--------------------" << endl;
+        launchRocket->changeStage();
+        cout << "--------------------" << endl;
+        cout << "Attempting to deploy spacecraft..." << endl;
+        RocketAdapter *ra = new RocketAdapter(launchRocket->getSpacecraft());
+        cout << "\t";
+        ra->attach();
+        cout << "\t";
+        ra->attach();
+        cout << "\t";
+        ra->ignite();
+        cout << "\t";
+        ra->accelerate();
+        cout << "\t";
+        ra->decelerate();
+        cout << "\t";
+        ra->dock();
+        cout << endl;
+        ra->dock();
+
+        cout << "--------------------" << endl;
+
+        spacestation->addSpacecraft(launchRocket->getSpacecraft());
+        ra->dock();
+
+        launchRocket->printInformation();
     }
     else
-        cout<< "no launch"<<endl;
+        cout << "not able to launch" << endl;
     //
-
-
-
-
-
-
-
-
-
-
-
 
     return 0;
 }
+

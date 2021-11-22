@@ -66,7 +66,7 @@ public:
     virtual Spacecraft *getSpacecraft() = 0;
     StarLink *getSatellite();
     bool staticFire();
-
+    void deploySatellites();
     // Command
     virtual void accelerate() = 0;
     virtual void decelerate() = 0;

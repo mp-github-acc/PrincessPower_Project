@@ -23,6 +23,7 @@ public:
     virtual string getName();
     virtual void sendCargo() = 0;
     void setName(string n);
+    void deploy();
     // Memento
     // SimulationState* createMemento();
     // void setMemento(SimulationState* memento);

@@ -6,7 +6,9 @@
 class Satellite : public StarLink
 {
 public:
-    Satellite(){};
+    Satellite();
+    ~Satellite();
     void print();
+    void deploy();
 };
 #endif
