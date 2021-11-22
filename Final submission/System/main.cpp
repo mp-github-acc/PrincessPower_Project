@@ -196,8 +196,8 @@ int main()
             adp->decelerate();
             cout << "\t";
             adp->dock();
-            cout << endl;
-            adp->dock();
+            // cout << endl;
+            // adp->dock();
             
             newRocket->printInformation();
             userInputToContinue("Rocket's current information");
