@@ -11,3 +11,8 @@ Members:
 - S, Claire
 - S, Matthew
 - M, Dharshan
+
+To run program:
+-go to "Final Submission" folder
+-go to "Systems" folder
+
