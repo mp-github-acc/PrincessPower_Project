@@ -14,6 +14,8 @@ Members:
 
 
 To run program:
+- download repository to your computer
+- extract zip file
 - go to "Final Submission" folder
 - go to "Systems" folder
 - "make" to compile 
