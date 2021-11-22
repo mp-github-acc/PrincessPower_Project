@@ -2,7 +2,7 @@
 
 Rocket::Rocket()
 {
-    cout << "Constructing rocket" << endl;
+    // cout << "Constructing rocket" << endl;
     // spacecraft_ = nullptr;
     satelliteCluster = NULL;
     // state

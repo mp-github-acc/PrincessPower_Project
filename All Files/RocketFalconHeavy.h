@@ -10,9 +10,13 @@ private:
 public:
     FalconHeavy();
     ~FalconHeavy();
+   void setRocketName(string s);
     void addEngine();
-    void handleRequest(string n, bool c);
-    void setNext(Rocket* r);
+    void addSpacecraft(Spacecraft *s);
+    Spacecraft *getSpacecraft();
+
+    void handleRequest(string n, bool r);
+    void setNext(Rocket *r);
 
     void accelerate();
     void decelerate();

@@ -2,16 +2,18 @@
 
 FalconHeavy::FalconHeavy()
 {
-    cout << "FalconHeavy created!" << endl;
     setRocketName("Falcon Heavy");
-    // this->satelliteCluster = nullptr;
+    next = NULL;
 }
 
 FalconHeavy::~FalconHeavy()
 {
     cout << "FalconHeavy grounded!" << endl;
 }
-
+void FalconHeavy::setRocketName(string n)
+{
+    this->rocketName = "Falcon 9";
+}
 void FalconHeavy::addEngine()
 {
     cout << "Core 1: Adding 9 merlin engines" << endl;
@@ -36,21 +38,31 @@ void FalconHeavy::addEngine()
     this->engines.push_back(pm->createMerlinVacuumEngine());
 }
 
-void FalconHeavy::setNext(Rocket* r){
+void FalconHeavy::addSpacecraft(Spacecraft *s)
+{
+    this->spacecraft_ = s;
+}
+Spacecraft *FalconHeavy::getSpacecraft(){
+    return this->spacecraft_;
+}
+void FalconHeavy::setNext(Rocket *r)
+{
     next = r;
 }
 
-void FalconHeavy::handleRequest(string n, bool change){
+void FalconHeavy::handleRequest(string n, bool change)
+{
     cout << "FH" << endl;
     // cout << satelliteCluster->getNumber() << endl;
-    if(n == "Falcon Heavy"){
+    if (n == "Falcon Heavy")
+    {
         cout << "Falcon cannot observe satellites" << endl;
     }
-    else{
+    else
+    {
         next->handleRequest(n, change);
     }
 }
-
 
 // Command
 void FalconHeavy::accelerate()

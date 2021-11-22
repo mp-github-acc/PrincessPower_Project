@@ -58,14 +58,14 @@ protected:
 public:
     Rocket();
     virtual ~Rocket();
-    void setRocketName(string s);
     string getRocketName();
-    void addSpacecraft(Spacecraft *s);
     void addSatellites(int c);
+    virtual void addSpacecraft(Spacecraft *s) = 0;
+    virtual void setRocketName(string s) = 0;
     virtual void addEngine() = 0;
-    bool staticFire();
-    Spacecraft *getSpacecraft();
+    virtual Spacecraft *getSpacecraft() = 0;
     StarLink *getSatellite();
+    bool staticFire();
 
     // Command
     virtual void accelerate() = 0;
