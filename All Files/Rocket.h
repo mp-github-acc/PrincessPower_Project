@@ -1,7 +1,7 @@
 #ifndef ROCKET_H
 #define ROCKET_H
 #include <iostream>
-
+#include <string>
 // Satellites
 #include "StarLinkSatellite.h"
 #include "StarLinkCluster.h"
@@ -32,6 +32,8 @@
 #include "Stage_Two.h"
 #include "Stage_Orbit.h"
 
+static const string Falcon9Engines[] = {"Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin Vacuum"};
+static const string FalconHeavyEngines[] = {"Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin", "Merlin Vacuum"};
 //Prototype
 #include "PrototypeManager.h"
 // #include <list>
@@ -46,13 +48,13 @@ protected:
     Spacecraft *spacecraft_;
     string rocketName;
     StarLink *satelliteCluster;
-    list<Engine*> engines;
+    list<Engine *> engines;
     State *currentStage; // rename this to be more specific
     // EngineFactory **engineFactory; // not sure we need this anymore...
-    Rocket *succesor; //Chain of repsonsibility 
+    Rocket *succesor; //Chain of repsonsibility
 
-    PrototypeManager* pm;//engines
-
+    PrototypeManager *pm; //engines
+    // engine checklist
 public:
     Rocket();
     virtual ~Rocket();

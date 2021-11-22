@@ -118,54 +118,57 @@ int main()
     {
         cout << "Rocket did not pass the static fire test. Cannot proceed to simulation." << endl;
     }
-    cout << " ---------------------- Simulation ------------------------------- " << endl;
-    cout << "Simulation will start shortly." << endl;
-    // random generator stuffs
-    // CommandControlCenter *controls = new CommandControlCenter(newRocket, newRocket->getSpacecraft());
-    // // Attach observers
-    // controls->liftOff();
-    // // need this to be conditional
-    // // if(newRocket->hasSatellites()){
-    // //     newRocket->setCondition(true);
-    // // }
-    // newRocket->handleRequest(newRocket->getRocketName(), true);
-    // newRocket->handleRequest(newRocket->getRocketName(), false);
-    // // State
+    else
+    {
 
-    // // Memento
-    // newRocket->printInformation();
+        cout << " ---------------------- Simulation ------------------------------- " << endl;
+        cout << "Simulation will start shortly." << endl;
+        // random generator stuffs
+        // CommandControlCenter *controls = new CommandControlCenter(newRocket, newRocket->getSpacecraft());
+        // // Attach observers
+        // controls->liftOff();
+        // // need this to be conditional
+        // // if(newRocket->hasSatellites()){
+        // //     newRocket->setCondition(true);
+        // // }
+        // newRocket->handleRequest(newRocket->getRocketName(), true);
+        // newRocket->handleRequest(newRocket->getRocketName(), false);
+        // // State
 
-    SimulationState *memento = newRocket->createMemento();
-    StateCaretaker care;
-    care.store(memento);
-    newRocket->printInformation();
+        // // Memento
+        // newRocket->printInformation();
 
-    newRocket->changeStage();
-    newRocket->changeStage();   
+        // SimulationState *memento = newRocket->createMemento();
+        // StateCaretaker care;
+        // care.store(memento);
+        // newRocket->printInformation();
 
-    // SpaceStation *spacestation = new SpaceStation();
+        // newRocket->changeStage();
+        // newRocket->changeStage();
 
-    // newRocket->changeStage();
-    // newRocket->changeStage();
-    // newRocket->changeStage();
-    // newRocket->changeStage();
+        // SpaceStation *spacestation = new SpaceStation();
 
-    // RocketAdapter *adp = new RocketAdapter(newRocket->getSpacecraft());
-    // adp->attach();
-    // adp->attach();
-    // adp->ignite();
-    // adp->accelerate();
-    // adp->decelerate();
-    // adp->dock();
+        // newRocket->changeStage();
+        // newRocket->changeStage();
+        // newRocket->changeStage();
+        // newRocket->changeStage();
 
-    // spacestation->addSpacecraft(newRocket->getSpacecraft());
-    // adp->dock();
+        // RocketAdapter *adp = new RocketAdapter(newRocket->getSpacecraft());
+        // adp->attach();
+        // adp->attach();
+        // adp->ignite();
+        // adp->accelerate();
+        // adp->decelerate();
+        // adp->dock();
 
-    // Memento
-    SimulationState *temp = care.retrieveState();
-    newRocket->makeMemento(temp);
+        // spacestation->addSpacecraft(newRocket->getSpacecraft());
+        // adp->dock();
 
-    newRocket->printInformation();
+        // Memento
+        // SimulationState *temp = care.retrieveState();
+        // newRocket->makeMemento(temp);
 
+        // newRocket->printInformation();
+    }
     return 0;
 }

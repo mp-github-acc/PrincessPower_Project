@@ -11,7 +11,9 @@ Rocket::Rocket()
     // engineFactory[0] = new MerlinFactory();
     // engineFactory[1] = new MerlinVacuumFactory();
 
-    pm=new PrototypeManager();
+    pm = new PrototypeManager();
+    // Falcon9Engines = {"Merlin","Merlin","Merlin","Merlin","Merlin","Merlin","Merlin","Merlin","Merlin","MerlinVacuum"};
+    // Falcon9Engines = {"Merlin","Merlin","Merlin","Merlin","Merlin","Merlin","Merlin","Merlin","Merlin","MerlinVacuum"};
 }
 Rocket::~Rocket()
 {
@@ -49,7 +51,8 @@ void Rocket::addSatellites(int c)
     }
 }
 
-StarLink* Rocket::getSatellite(){
+StarLink *Rocket::getSatellite()
+{
     return this->satelliteCluster;
 }
 // template method
@@ -58,7 +61,7 @@ bool Rocket::staticFire()
     // Get name of rocket
     // Check if satellite depending on name
     cout << "Inspecting rocket: " << this->getRocketName() << "..." << endl;
-    if (this->getRocketName()  == "Falcon 9")
+    if (this->getRocketName() == "Falcon 9")
     {
         cout << "\tShould rocket have satellites? 1 for Yes or 0 for No : ";
         int hasSatellite;
@@ -110,10 +113,43 @@ bool Rocket::staticFire()
     }
     cout << "\tExamining the engines..." << endl;
     // check if the F9 has 9 Merlin engines and the Heavy has the other amount
+    list<Engine*>::iterator it = engines.begin();
+    int num = 0;
+     cout << "\t" <<  this->getRocketName() << " awaiting checklist" << endl;
+     cout << "\t";
+    if(this->getRocketName() == "Falcon 9"){
+        // iterate through the list of engines and compare to the array
+        for( ; it != engines.end(); ++it){
+            if((*it)->getName() != Falcon9Engines[num]){
+                cout << endl;
+                cout << "Incorrect Engine: expected " << Falcon9Engines[num] << " but got " << Falcon9Engines[num] << endl;
 
+                return false;
+            }
+            cout << num + 1 << " ";
+            num++;
+            // cout << (*it)->getName();
+        }
+        cout << endl;
+    }
+    else{
+        // iterate throught the list and the other array
+        for( ; it != engines.end(); ++it){
+            if((*it)->getName() != FalconHeavyEngines[num]){
+                cout << endl;
+                cout << "Incorrect Engine: expected " << FalconHeavyEngines[num] << " but got " << FalconHeavyEngines[num] << endl;
+                return false;
+            }
+            cout << num + 1 << " ";
+            num++;
+            // cout << engines.size();
+            // cout << (*it)->getName();
+        }
+        cout << endl;
+    }
+    cout << "\t" <<  this->getRocketName() << " has the right number and type of engines." << endl;
     return true;
 }
-
 
 // Observer
 void Rocket::implementObsever()
@@ -131,7 +167,8 @@ void Rocket::implementObsever()
     // handleRequest();
 }
 
-Spacecraft* Rocket::getSpacecraft(){
+Spacecraft *Rocket::getSpacecraft()
+{
     return spacecraft_;
 }
 
@@ -215,11 +252,10 @@ void Rocket::makeMemento(SimulationState *m)
         currentStage = new Stage_Orbit();
 
     // list<Engine *>::iterator it = engines.begin();
-    cout << "Deleting "  << engines.size() << " engines " << endl;
+    cout << "Deleting " << engines.size() << " engines " << endl;
     engines.erase(engines.begin(), engines.end());
     cout << endl;
     // }
-    
 
     if (n == "Falcon 9")
     {
