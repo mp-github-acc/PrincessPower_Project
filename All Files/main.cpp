@@ -204,11 +204,14 @@ int main()
     {
         //can launch
         cout << "\n\n\n\n---LAUNCH SEQUENCE---" << endl;
+
         Rocket *launchRocket;
+        SpaceStation *spacestation = new SpaceStation();
+
         launchRocket = batch.front();
         batch.pop_front();
-
         launchRocket->printInformation();
+        
 
         CommandControlCenter *contr = new CommandControlCenter(launchRocket, launchRocket->getSpacecraft());
         cout << "--------------------" << endl;
@@ -220,14 +223,9 @@ int main()
         launchRocket->changeStage();
         cout << "--------------------" << endl;
         // Memento
+
         launchRocket->printInformation();
 
-        SimulationState *memento = launchRocket->createMemento();
-        StateCaretaker care;
-        care.store(memento);
-        launchRocket->printInformation();
-
-        SpaceStation *spacestation = new SpaceStation();
 
         cout << "--------------------" << endl;
         launchRocket->changeStage();
@@ -239,20 +237,13 @@ int main()
         cout << "--------------------" << endl;
         cout << "Attempting to deploy spacecraft..." << endl;
         RocketAdapter *ra = new RocketAdapter(launchRocket->getSpacecraft());
-        cout << "\t";
-        ra->attach();
-        cout << "\t";
-        ra->attach();
-        cout << "\t";
-        ra->ignite();
-        cout << "\t";
-        ra->accelerate();
-        cout << "\t";
-        ra->decelerate();
-        cout << "\t";
-        ra->dock();
-        cout << endl;
-        ra->dock();
+        cout << "\t";ra->attach();
+        cout << "\t";ra->attach();
+        cout << "\t";ra->ignite();
+        cout << "\t";ra->accelerate();
+        cout << "\t";ra->decelerate();
+        cout << "\t";ra->dock();
+        cout << endl;ra->dock();
 
         cout << "--------------------" << endl;
 
