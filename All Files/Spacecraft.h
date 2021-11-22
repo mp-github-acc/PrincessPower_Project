@@ -14,8 +14,8 @@ class Spacecraft
 {
 protected:
     string name;
-    State* currentState;
-
+    // State* currentState;
+    
 
 public:
     Spacecraft();
