@@ -1,1 +1,1 @@
-Final submission files for COS 214 project
+Final submission of Princess Power for COS 214 project
