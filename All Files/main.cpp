@@ -62,7 +62,6 @@ int main()
     newRocket->setNext(rFactory[1 - choice]->createRocket());
     while (true)
     {
-
         cout << "Choose a spacecraft: 0 = CrewDragon, 1 = Dragon - ";
         cin >> choice;
         if (choice == 0)
@@ -127,7 +126,8 @@ int main()
     // if(newRocket->hasSatellites()){
     //     newRocket->setCondition(true);
     // }
-    // newRocket->handleRequest(newRocket->getRocketName(), true);
+    newRocket->handleRequest(newRocket->getRocketName(), true);
+    newRocket->handleRequest(newRocket->getRocketName(), false);
     // State
 
     newRocket->printInformation();

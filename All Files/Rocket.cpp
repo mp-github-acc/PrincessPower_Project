@@ -4,7 +4,7 @@ Rocket::Rocket()
 {
     cout << "Constructing rocket" << endl;
     // spacecraft_ = nullptr;
-    satelliteCluster = nullptr;
+    satelliteCluster = NULL;
     // state
     currentStage = new Stage_Grounded();
     engineFactory = new EngineFactory *[2];
@@ -142,7 +142,6 @@ void Rocket::implementObsever()
 {
     if (this->satelliteCluster != NULL)
     {
-
         observer = new ConcreteMissionControl(satelliteCluster);
         cout << "\tSatellites are being observed" << endl;
     }

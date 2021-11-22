@@ -26,12 +26,22 @@ void FalconNine::setNext(Rocket *r){
 }
 
 void FalconNine::handleRequest(string n, bool change){
-    satelliteCluster->setState(change);
+    // cout <<"F9" << endl;
+    // cout << "Here" << endl;
+    if(satelliteCluster == NULL){
+        cout << n << " has no satellites." << endl;
+        return;
+    }
+    // cout << satelliteCluster->getNumber() << endl;
+    // cout << satelliteCluster->getNumber() << endl;
+    Rocket::implementObsever();
+    setCondition(change);
     if(n == "Falcon 9"){
+        satelliteCluster->setState(change);
         cout << "Now implementing required number of satellite observers" << endl;
-        Rocket::implementObsever();
     }
     else{
+        cout << "There" << endl;
         next->handleRequest(n, change);
     }
 }
