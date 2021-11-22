@@ -26,6 +26,7 @@
 
 using namespace std;
 
+void userInputToContinue(string s);
 
 int main()
 {
@@ -42,222 +43,288 @@ int main()
     Rocket *newRocket;
 
     list<Rocket *> batch;
+    
 
-    while (!canContinue)
+    bool gotoLaunch=false;
+    do
     {
-        cout << "\n ---------------------- Construction ---------------------------- " << endl;
-        int choice = 0;
-        cout << "Welcome to Rocket construction" << endl;
-        while (true)
+        while (!canContinue)
         {
-            cout << "Choose a Rocket: 0 = Falcon9, 1 = Falcon Heavy - ";
-            cin >> choice;
-            if (choice == 0)
-            {
-                break;
-            }
-            if (choice == 1)
-            {
-                break;
-            }
-        }
-        /*
-    choice = 0; [0] 
-    other = 1 - choice = 1; [1]
-
-    choice = 1; [1]
-    other = 1 - choice = 0 [0]
-*/
-        // Rocket creation
-        newRocket = rFactory[choice]->createRocket();
-        newRocket->setNext(rFactory[1 - choice]->createRocket());
-        while (true)
-        {
-            cout << "Choose a spacecraft: 0 = CrewDragon, 1 = Dragon - ";
-            cin >> choice;
-            if (choice == 0)
-            {
-                break;
-            }
-            if (choice == 1)
-            {
-                break;
-            }
-        }
-        newRocket->addSpacecraft(sFactory[choice]->createSpacecraft());
-        // Satellites:
-        if (newRocket->getRocketName() == "Falcon 9")
-        {
+            cout << "\n ---------------------- Construction ---------------------------- " << endl;
+            int choice = 0;
+            cout << "Welcome to Rocket construction" << endl;
             while (true)
             {
-                cout << "Do you want satellites: 1 = yes, 0 = no - ";
+                cout << "Choose a Rocket: 0 = Falcon9, 1 = Falcon Heavy - ";
                 cin >> choice;
-                if (choice == 1 || choice == 0)
+                if (choice == 0)
+                {
+                    break;
+                }
+                if (choice == 1)
                 {
                     break;
                 }
             }
-            newRocket->addSatellites(choice);
+  
+
+            // Rocket creation
+            newRocket = rFactory[choice]->createRocket();
+            newRocket->setNext(rFactory[1 - choice]->createRocket());
+            while (true)
+            {
+                cout << "Choose a spacecraft: 0 = CrewDragon, 1 = Dragon - ";
+                cin >> choice;
+                if (choice == 0)
+                {
+                    break;
+                }
+                if (choice == 1)
+                {
+                    break;
+                }
+            }
+            newRocket->addSpacecraft(sFactory[choice]->createSpacecraft());
+            // Satellites:
+            if (newRocket->getRocketName() == "Falcon 9")
+            {
+                while (true)
+                {
+                    cout << "Do you want satellites: 1 = yes, 0 = no - ";
+                    cin >> choice;
+                    if (choice == 1 || choice == 0)
+                    {
+                        break;
+                    }
+                }
+                newRocket->addSatellites(choice);
+            }
+            else
+            {
+                cout << newRocket->getRocketName() << " cannot take satellites." << endl;
+            }
+            // engines as well
+
+            cout <<endl<< "Adding engines to " << newRocket->getRocketName() << endl;
+            newRocket->addEngine();
+
+            userInputToContinue("Starting static fire");
+            
+
+            cout << endl;
+            cout << " ---------------------- Static Fire ------------------------------- " << endl;
+            cout << "Rocket will now enter the Static Fire Test..." << endl;
+            if (newRocket->staticFire())
+            {
+                canContinue = true;
+                cout << "Rocket is complete" << endl;
+            }
+            else
+            {
+                canContinue = false;
+                cout << "Rocket is incomplete" << endl;
+                userInputToContinue("Restarting construction");
+            }
+            cout << endl;
+
+            
+        }
+        if (!canContinue)
+        {
+            cout << "Rocket did not pass the static fire test. Cannot proceed to simulation." << endl;
+            userInputToContinue("");
         }
         else
         {
-            cout << newRocket->getRocketName() << " cannot take satellites." << endl;
+            userInputToContinue("Proceeding to simulation");
+
+            cout << " ---------------------- Simulation ------------------------------- " << endl;
+            cout << "Simulation will start shortly." << endl;
+            cout << "Require observers:\t";
+
+            SimulationState *memento = newRocket->createMemento();
+            StateCaretaker care;
+
+            userInputToContinue("Storing rocket state");
+            care.store(memento);
+
+            newRocket->printInformation();
+            userInputToContinue("Rocket's current information");
+
+            CommandControlCenter *controls = new CommandControlCenter(newRocket, newRocket->getSpacecraft());
+            cout << "--------------------" << endl;
+            newRocket->changeStage();
+            cout << "--------------------" << endl;
+            controls->liftOff();
+            cout << "--------------------" << endl;
+            cout << "--------------------" << endl;
+            newRocket->changeStage();
+            cout << "--------------------" << endl;
+            userInputToContinue("");
+
+            // Memento
+            newRocket->printInformation();
+            userInputToContinue("Rocket's current information");
+
+            
+
+            SpaceStation *spacestation = new SpaceStation();
+
+            cout << "--------------------" << endl;
+            newRocket->changeStage();
+            // Attach observers
+            newRocket->deploySatellites();
+            newRocket->handleRequest(newRocket->getRocketName(), true);
+            userInputToContinue("");
+            
+            cout << endl;
+            cout << "--------------------" << endl;
+            cout << "--------------------" << endl;
+            newRocket->changeStage();
+            cout << "--------------------" << endl;
+            cout << "Attempting to deploy spacecraft..." << endl;
+            RocketAdapter *adp = new RocketAdapter(newRocket->getSpacecraft());
+            cout << "\t";
+            adp->attach();
+            cout << "\t";
+            adp->attach();
+            cout << "\t";
+            adp->ignite();
+            cout << "\t";
+            adp->accelerate();
+            cout << "\t";
+            adp->decelerate();
+            cout << "\t";
+            adp->dock();
+            cout << endl;
+            adp->dock();
+            
+            newRocket->printInformation();
+            userInputToContinue("Rocket's current information");
+
+            cout << "--------------------" << endl;
+
+            spacestation->addSpacecraft(newRocket->getSpacecraft());
+            adp->dock();
+
+            // Memento
+            userInputToContinue("Retrieving stored rocket state");
+            SimulationState *temp = care.retrieveState();
+            newRocket->makeMemento(temp);
+            // newRocket->printInformation();
+
+            newRocket->printInformation();
+
+            batch.push_back(newRocket);
+
         }
-        // engines as well
+        int answer;     
 
-        cout << "Adding engines to " << newRocket->getRocketName() << endl;
-        newRocket->addEngine();
-
-        cout << endl;
-        cout << " ---------------------- Static Fire ------------------------------- " << endl;
-        cout << "Rocket will now enter the Static Fire Test..." << endl;
-        if (newRocket->staticFire())
+        while (true)
         {
-            canContinue = true;
-            cout << "Rocket is complete" << endl;
+            cout<<"Do you want to go to launch? 1 = Yes, 0 = No - ";
+            cin >> answer;
+            if (answer == 1)
+            {
+                gotoLaunch=true;
+                break;
+            }
+            if (answer == 0)
+            {
+                canContinue=false;
+                break;
+            }
         }
-        else
+        
+        
+    }
+    while(!gotoLaunch);
+
+    if (!batch.empty() && gotoLaunch)
+    {
+        cout << "\n\n\n\n----------------------LAUNCH SEQUENCE----------------------------" << endl;
+        int count=1;
+        while(!batch.empty())
         {
-            canContinue = false;
-            cout << "Rocket is incomplete" << endl;
+            //can launch
+            cout << "\n\n====Rocket #"<<count<<"====" << endl;
+
+            Rocket *launchRocket;
+            SpaceStation *sp = new SpaceStation();
+
+            launchRocket = batch.front();
+            batch.pop_front();
+            launchRocket->printInformation();
+            userInputToContinue("Rocket's current information");
+            
+            userInputToContinue("Preparing to launch rocket");
+            CommandControlCenter *contr = new CommandControlCenter(launchRocket, launchRocket->getSpacecraft());
+            cout << "--------------------" << endl;
+            launchRocket->changeStage();
+            cout << "--------------------" << endl;
+            contr->liftOff();
+            cout << "--------------------" << endl;
+            cout << "--------------------" << endl;
+            launchRocket->changeStage();
+            cout << "--------------------" << endl;
+            // Memento
+            userInputToContinue("");
+            launchRocket->printInformation();
+            userInputToContinue("Rocket's current information");
+
+
+            cout << "--------------------" << endl;
+            launchRocket->changeStage();
+            // Attach observers
+            launchRocket->handleRequest(launchRocket->getRocketName(), true);
+            cout << "--------------------" << endl;
+            cout << "--------------------" << endl;
+            launchRocket->changeStage();
+            cout << "--------------------" << endl;
+            cout << "Attempting to deploy spacecraft..." << endl;
+            RocketAdapter *ra = new RocketAdapter(launchRocket->getSpacecraft());
+            cout << "\t";ra->attach();
+            cout << "\t";ra->attach();
+            cout << "\t";ra->ignite();
+            cout << "\t";ra->accelerate();
+            cout << "\t";ra->decelerate();
+            cout << "\t";ra->dock();
+
+            launchRocket->printInformation();
+            userInputToContinue("Rocket's current information");
+
+            cout << endl;
+            sp->addSpacecraft(launchRocket->getSpacecraft());
+            ra->dock();
+
+            cout << "--------------------" << endl;
+            userInputToContinue("");
+
+            count++;
+            userInputToContinue("Rocket completed launch");
+            cout<<"===========================" << endl;
         }
-        cout << endl;
-    }
-    if (!canContinue)
-    {
-        cout << "Rocket did not pass the static fire test. Cannot proceed to simulation." << endl;
-    }
-    else
-    {
-        cout << " ---------------------- Simulation ------------------------------- " << endl;
-        cout << "Simulation will start shortly." << endl;
-        cout << "Require observers:\t";
-
-        SimulationState *memento = newRocket->createMemento();
-        StateCaretaker care;
-        care.store(memento);
-
-        newRocket->printInformation();
-
-        CommandControlCenter *controls = new CommandControlCenter(newRocket, newRocket->getSpacecraft());
-        cout << "--------------------" << endl;
-        newRocket->changeStage();
-        cout << "--------------------" << endl;
-        controls->liftOff();
-        cout << "--------------------" << endl;
-        cout << "--------------------" << endl;
-        newRocket->changeStage();
-        cout << "--------------------" << endl;
-
-        // Memento
-        newRocket->printInformation();
-
-        
-
-        SpaceStation *spacestation = new SpaceStation();
-
-        cout << "--------------------" << endl;
-        newRocket->changeStage();
-        // Attach observers
-        newRocket->handleRequest(newRocket->getRocketName(), true);
-        newRocket->deploySatellites();
-        cout << endl;
-        cout << "--------------------" << endl;
-        cout << "--------------------" << endl;
-        newRocket->changeStage();
-        cout << "--------------------" << endl;
-        cout << "Attempting to deploy spacecraft..." << endl;
-        RocketAdapter *adp = new RocketAdapter(newRocket->getSpacecraft());
-        cout << "\t";
-        adp->attach();
-        cout << "\t";
-        adp->attach();
-        cout << "\t";
-        adp->ignite();
-        cout << "\t";
-        adp->accelerate();
-        cout << "\t";
-        adp->decelerate();
-        cout << "\t";
-        adp->dock();
-        cout << endl;
-        adp->dock();
-
-        cout << "--------------------" << endl;
-
-        spacestation->addSpacecraft(newRocket->getSpacecraft());
-        adp->dock();
-
-        // Memento
-        SimulationState *temp = care.retrieveState();
-        newRocket->makeMemento(temp);
-        // newRocket->printInformation();
-
-        newRocket->printInformation();
-
-        batch.push_back(newRocket);
-
-
-    }
-
-    if (!batch.empty())
-    {
-        //can launch
-        cout << "\n\n\n\n---LAUNCH SEQUENCE---" << endl;
-
-        Rocket *launchRocket;
-        SpaceStation *spacestation = new SpaceStation();
-
-        launchRocket = batch.front();
-        batch.pop_front();
-        launchRocket->printInformation();
-        
-
-        CommandControlCenter *contr = new CommandControlCenter(launchRocket, launchRocket->getSpacecraft());
-        cout << "--------------------" << endl;
-        launchRocket->changeStage();
-        cout << "--------------------" << endl;
-        contr->liftOff();
-        cout << "--------------------" << endl;
-        cout << "--------------------" << endl;
-        launchRocket->changeStage();
-        cout << "--------------------" << endl;
-        // Memento
-
-        launchRocket->printInformation();
-
-
-        cout << "--------------------" << endl;
-        launchRocket->changeStage();
-        // Attach observers
-        launchRocket->handleRequest(launchRocket->getRocketName(), true);
-        cout << "--------------------" << endl;
-        cout << "--------------------" << endl;
-        launchRocket->changeStage();
-        cout << "--------------------" << endl;
-        cout << "Attempting to deploy spacecraft..." << endl;
-        RocketAdapter *ra = new RocketAdapter(launchRocket->getSpacecraft());
-        cout << "\t";ra->attach();
-        cout << "\t";ra->attach();
-        cout << "\t";ra->ignite();
-        cout << "\t";ra->accelerate();
-        cout << "\t";ra->decelerate();
-        cout << "\t";ra->dock();
-        cout << endl;ra->dock();
-
-        cout << "--------------------" << endl;
-
-        spacestation->addSpacecraft(launchRocket->getSpacecraft());
-        ra->dock();
-
-        launchRocket->printInformation();
     }
     else{
-        cout << "not able to launch" << endl;
+        cout << "Not running launch, exiting program" << endl;
     }
        
     //
-
+    cout << "End of program, now exiting. Thank you for running the simulation with Princess Power!\n\n" << endl;
     return 0;
 }
 
+void userInputToContinue(string s){
+    string anyUserInput;
+    cout<<endl;
+    if(s==""){        
+        cout<<"Enter any value to continue -";
+        cin>>anyUserInput;
+    }
+    else{
+        cout<<s<<", enter any value to continue -";
+        cin>>anyUserInput;
+    }
+    cout<<endl;
+}
+//userInputToContinue("");
