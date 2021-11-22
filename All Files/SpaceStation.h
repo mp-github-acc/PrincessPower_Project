@@ -2,9 +2,10 @@
 #define SPACESTATION_H
 #include <iostream>
 using namespace std;
-#include <list>//ur mom
+
+#include <list>
 #include "Spacecraft.h"
-//Adapter SpaceStation.h
+
 //Target Rocket.h
 //Adaptee SpaceCraft.h
 
@@ -15,6 +16,8 @@ class SpaceStation{
     public:
         SpaceStation();
         ~SpaceStation();
+
+        bool contains(Spacecraft* s);
 
         void addSpacecraft(Spacecraft* s);
         Spacecraft* removeSpacecraft(Spacecraft* s);

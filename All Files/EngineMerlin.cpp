@@ -1,9 +1,19 @@
 #include "EngineMerlin.h"
 
-Merlin::Merlin(){
-    name="Merlin";
+Merlin::Merlin(Merlin* m)
+{
+    name = m->getName();
 }
 
-Merlin::~Merlin(){
+Merlin::Merlin()
+{
+    name = "Merlin";
+}
 
+Merlin::~Merlin()
+{
+}
+
+Merlin* Merlin::clone(){
+    return new Merlin(*this);
 }

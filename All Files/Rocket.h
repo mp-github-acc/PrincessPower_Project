@@ -31,9 +31,11 @@
 #include "Stage_One.h"
 #include "Stage_Two.h"
 #include "Stage_Orbit.h"
+
+//Prototype
+#include "PrototypeManager.h"
 // #include <list>
 using namespace std;
-
 
 class Rocket
 {
@@ -44,11 +46,12 @@ protected:
     Spacecraft *spacecraft_;
     string rocketName;
     StarLink *satelliteCluster;
-    list<Engine *> engines;
+    list<Engine*> engines;
     State *currentStage; // rename this to be more specific
-    EngineFactory **engineFactory;
+    // EngineFactory **engineFactory; // not sure we need this anymore...
+    Rocket *succesor; //Chain of repsonsibility 
 
-    Rocket *succesor;
+    PrototypeManager* pm;//engines
 
 public:
     Rocket();
@@ -57,15 +60,18 @@ public:
     string getRocketName();
     void addSpacecraft(Spacecraft *s);
     void addSatellites(int c);
-    virtual void addEngine()=0;
+    virtual void addEngine() = 0;
     bool staticFire();
-    // Command
-    void accelerate();
-    void decelerate();
-    void ignite();
-    void attach();
-    void dock();
     Spacecraft *getSpacecraft();
+    StarLink *getSatellite();
+
+    // Command
+    virtual void accelerate() = 0;
+    virtual void decelerate() = 0;
+    virtual void ignite() = 0;
+    virtual void attach() = 0;
+    virtual void dock() = 0;
+
     // Observer
     void implementObsever();
     void setCondition(bool b);
@@ -83,7 +89,7 @@ public:
 
     // Chain of Responsibility
     virtual void handleRequest(string n, bool c) = 0;
-    virtual void setNext(Rocket* r) = 0;
+    virtual void setNext(Rocket *r) = 0;
     // void checkOne();
     // void checkTwo();
 
@@ -95,6 +101,5 @@ public:
     void makeMemento(SimulationState *m);
 
     void printInformation();
-    
 };
 #endif

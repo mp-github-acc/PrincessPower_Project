@@ -19,6 +19,8 @@
 #include "SimulationState.h"
 #include "StateRocket.h"
 
+#include "SpaceStation.h"
+#include "RocketAdapter.h"
 //Princess power!
 
 using namespace std;
@@ -119,28 +121,47 @@ int main()
     cout << " ---------------------- Simulation ------------------------------- " << endl;
     cout << "Simulation will start shortly." << endl;
     // random generator stuffs
-    CommandControlCenter *controls = new CommandControlCenter(newRocket, newRocket->getSpacecraft());
-    // Attach observers
-    controls->liftOff();
-    // need this to be conditional
-    // if(newRocket->hasSatellites()){
-    //     newRocket->setCondition(true);
-    // }
-    newRocket->handleRequest(newRocket->getRocketName(), true);
-    newRocket->handleRequest(newRocket->getRocketName(), false);
-    // State
+    // CommandControlCenter *controls = new CommandControlCenter(newRocket, newRocket->getSpacecraft());
+    // // Attach observers
+    // controls->liftOff();
+    // // need this to be conditional
+    // // if(newRocket->hasSatellites()){
+    // //     newRocket->setCondition(true);
+    // // }
+    // newRocket->handleRequest(newRocket->getRocketName(), true);
+    // newRocket->handleRequest(newRocket->getRocketName(), false);
+    // // State
 
-    newRocket->printInformation();
+    // // Memento
+    // newRocket->printInformation();
 
     SimulationState *memento = newRocket->createMemento();
     StateCaretaker care;
     care.store(memento);
+    newRocket->printInformation();
 
     newRocket->changeStage();
-    newRocket->changeStage();
-    newRocket->changeStage();
-    newRocket->changeStage();
+    newRocket->changeStage();   
 
+    // SpaceStation *spacestation = new SpaceStation();
+
+    // newRocket->changeStage();
+    // newRocket->changeStage();
+    // newRocket->changeStage();
+    // newRocket->changeStage();
+
+    // RocketAdapter *adp = new RocketAdapter(newRocket->getSpacecraft());
+    // adp->attach();
+    // adp->attach();
+    // adp->ignite();
+    // adp->accelerate();
+    // adp->decelerate();
+    // adp->dock();
+
+    // spacestation->addSpacecraft(newRocket->getSpacecraft());
+    // adp->dock();
+
+    // Memento
     SimulationState *temp = care.retrieveState();
     newRocket->makeMemento(temp);
 

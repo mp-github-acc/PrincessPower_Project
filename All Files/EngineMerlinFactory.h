@@ -6,6 +6,7 @@
 class MerlinFactory : public EngineFactory
 {
 private:
+
 public:
         MerlinFactory();
         ~MerlinFactory();

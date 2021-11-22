@@ -5,13 +5,14 @@
 using namespace std;
 
 class Engine
-{
+{// PROTOTYPE
     protected:
         string name;
     public:
         Engine();
         ~Engine();
+        Engine(Engine*);
         string getName();
-        
+        virtual Engine *clone() = 0;
 };
 #endif

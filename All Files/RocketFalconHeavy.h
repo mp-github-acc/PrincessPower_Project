@@ -13,5 +13,11 @@ public:
     void addEngine();
     void handleRequest(string n, bool c);
     void setNext(Rocket* r);
+
+    void accelerate();
+    void decelerate();
+    void ignite();
+    void attach();
+    void dock();
 };
 #endif
