@@ -261,8 +261,10 @@ int main()
 
         launchRocket->printInformation();
     }
-    else
+    else{
         cout << "not able to launch" << endl;
+    }
+       
     //
 
     return 0;
