@@ -11,7 +11,7 @@ FalconNine::~FalconNine()
 }
 void FalconNine::setRocketName(string n)
 {
-    this->rocketName = "Falcon 9";
+    this->rocketName = n;
 }
 
 void FalconNine::addEngine()
@@ -30,7 +30,8 @@ void FalconNine::addSpacecraft(Spacecraft *s)
 {
     this->spacecraft_ = s;
 }
-Spacecraft *FalconNine::getSpacecraft(){
+Spacecraft *FalconNine::getSpacecraft()
+{
     return this->spacecraft_;
 }
 void FalconNine::setNext(Rocket *r)

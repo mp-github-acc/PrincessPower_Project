@@ -12,7 +12,7 @@ FalconHeavy::~FalconHeavy()
 }
 void FalconHeavy::setRocketName(string n)
 {
-    this->rocketName = "Falcon 9";
+    this->rocketName = n;
 }
 void FalconHeavy::addEngine()
 {

@@ -10,7 +10,9 @@ Cluster::Cluster()
     cout << endl;
     cout << "Total: " << total << endl;
 }
-Cluster::~Cluster() {}
+Cluster::~Cluster() {
+    cluster_.erase(cluster_.begin(), cluster_.end());
+}
 
 void Cluster::add(StarLink *satellite)
 {

@@ -26,7 +26,9 @@ int StarLink::getTotal()
 {
     return total;
 }
-void StarLink::add(StarLink *satellite) {}
+void StarLink::add(StarLink *satellite) {
+    satellite->getNumber();
+}
 void StarLink::remove() {}
 
 

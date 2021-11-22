@@ -10,7 +10,7 @@ class Engine
         string name;
     public:
         Engine();
-        ~Engine();
+        virtual ~Engine();
         Engine(Engine*);
         string getName();
         virtual Engine *clone() = 0;

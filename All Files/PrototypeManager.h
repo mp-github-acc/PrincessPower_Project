@@ -13,7 +13,7 @@ private:
     Engine** engines;
 public:
     PrototypeManager();
-    ~PrototypeManager();
+    virtual ~PrototypeManager();
 
     Engine* createMerlinEngine();
     Engine* createMerlinVacuumEngine();

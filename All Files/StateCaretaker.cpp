@@ -2,11 +2,12 @@
 
 StateCaretaker::StateCaretaker()
 {
-    cout << "Created StateCaretaker" << endl;
+    // cout << "Created StateCaretaker" << endl;
 }
 StateCaretaker::~StateCaretaker()
 {
-    cout << "Deleted StateCaretaker" << endl;
+    // cout << "Deleted StateCaretaker" << endl;
+    delete simState;
 }
 
 void StateCaretaker::store(SimulationState* s){

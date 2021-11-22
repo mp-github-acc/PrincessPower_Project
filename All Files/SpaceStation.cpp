@@ -12,15 +12,16 @@ void SpaceStation::addSpacecraft(Spacecraft *s)
     cout << "Space Station: Spacecraft successfully docked" << endl;
 }
 
-Spacecraft *SpaceStation::removeSpacecraft(Spacecraft *s)
-{
-    // dockedSpacecraft->remove(s);
-    dockedSpacecraft.remove(s);
-    cout << "Space Station: Spacecraft successfully undocked" << endl;
-}
+// Spacecraft *SpaceStation::removeSpacecraft(Spacecraft *s)
+// {
+//     // dockedSpacecraft->remove(s);
+//     dockedSpacecraft.remove(s);
+//     cout << "Space Station: Spacecraft successfully undocked" << endl;
+// }
 
-bool SpaceStation::contains(Spacecraft *s)
-{
-    return false;
-    //if not in the list, then add to list
-}
+// bool SpaceStation::contains(Spacecraft *s)
+// {
+//     s;
+//     return false;
+//     //if not in the list, then add to list
+// }

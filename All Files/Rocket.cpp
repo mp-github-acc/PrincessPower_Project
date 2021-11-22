@@ -20,6 +20,11 @@ Rocket::~Rocket()
     // Clean up
     delete spacecraft_;
     delete satelliteCluster;
+    engines.erase(engines.begin(), engines.end());
+    delete currentStage;
+    delete succesor;
+    delete pm;
+
 }
 void Rocket::setRocketName(string n)
 {
@@ -55,6 +60,7 @@ StarLink *Rocket::getSatellite()
 {
     return this->satelliteCluster;
 }
+
 // template method
 bool Rocket::staticFire()
 {
@@ -311,26 +317,21 @@ void Rocket::makeMemento(SimulationState *m)
 void Rocket::printInformation()
 {
 
-    cout << "\n---ROCKET INFORMATION---" << endl;
-    cout << "Rocket name: \t" << rocketName << endl;
+    cout << "\n--- ROCKET INFORMATION ---" << endl;
+    cout << "Rocket name: \t\t" << rocketName << endl;
+
+    cout << "Engines: \t\t" << engines.size() << endl;
 
     if (satelliteCluster == nullptr)
-        cout << "Satellites: no satellites" << endl;
+        cout << "Satellites: \t\t0" << endl;
     else
-        cout << "Satellites: " << satelliteCluster->getNumber() << endl;
+        cout << "Satellites: \t\t" << satelliteCluster->getNumber() << endl;
 
-    cout << "Engines: " << engines.size() << endl;
-    // list<Engine *>::iterator it = engines.begin();
-    // for (;)
-    // {
-    //     cout << "Deleting engine " << (*it)->getName() << endl;
 
-    // }
+    cout << "Spacecraft type: \t" << spacecraft_->getName() << endl;
+
+    cout << "Current stage: \t\t" << currentStage->getCurrentState() << endl;
+
+    cout << "--------------------------" << endl;
     cout << endl;
-    // }
-    // cout << "" << endl;
-    // cout << "" << endl;
-    // cout << "" << endl;
-    // cout << "" << endl;
-    cout << "------------------------" << endl;
 }

@@ -21,7 +21,9 @@ public:
     void ignite();
     void attach();
     void dock();
-
+    void addSpacecraft(Spacecraft* s);
+    void setRocketName(string n);
+    Spacecraft *getSpacecraft();
     // Adapter
     bool isDocked();
     bool isAttached();

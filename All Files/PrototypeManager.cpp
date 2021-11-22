@@ -14,6 +14,8 @@ PrototypeManager::~PrototypeManager(){
     delete prototypes[1];
     delete engines[0];
     delete engines[1];
+    delete engines;
+    delete prototypes;
 }
 
 

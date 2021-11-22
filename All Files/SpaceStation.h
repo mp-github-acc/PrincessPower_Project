@@ -17,9 +17,9 @@ class SpaceStation{
         SpaceStation();
         ~SpaceStation();
 
-        bool contains(Spacecraft* s);
+        // bool contains(Spacecraft* s);
 
         void addSpacecraft(Spacecraft* s);
-        Spacecraft* removeSpacecraft(Spacecraft* s);
+        // Spacecraft* removeSpacecraft(Spacecraft* s);
 };
 #endif

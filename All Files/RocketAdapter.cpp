@@ -10,6 +10,12 @@ RocketAdapter::~RocketAdapter()
 {
     delete adaptee;
 }
+void RocketAdapter::setRocketName(std::string n){
+    string schweet = n;
+}
+void RocketAdapter::addSpacecraft(Spacecraft *s){
+    adaptee = s;
+}
 
 void RocketAdapter::accelerate()
 {
@@ -71,10 +77,9 @@ void RocketAdapter::dock()
         docked=true;
     }
 }
-
-
-
-
+Spacecraft *RocketAdapter::getSpacecraft(){
+    return adaptee;
+}
 
 bool RocketAdapter::isDocked()
 {
@@ -102,9 +107,14 @@ void RocketAdapter::addEngine(){
 }
 void RocketAdapter::handleRequest(string n, bool c){
     //niks
+    n = "_";
+    if(c){
+        c = !c;
+    }
 }
 
 void RocketAdapter::setNext(Rocket *r){
     //niks
+    r->getRocketName();
 }
 
