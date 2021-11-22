@@ -64,6 +64,8 @@ StarLink *Rocket::getSatellite()
 // template method
 bool Rocket::staticFire()
 {
+    string anyUserInput;
+
     // Get name of rocket
     // Check if satellite depending on name
     cout << "Inspecting rocket: " << this->getRocketName() << "..." << endl;
@@ -88,6 +90,10 @@ bool Rocket::staticFire()
                 }
             }
         }
+
+        cout<<"\tEnter any value to continue -";
+        cin>>anyUserInput;
+
         if (hasSatellite == 1 && this->getSatellite() != NULL)
         { // yes and cluster exists
             cout << "\tLooking if satellites are present: " << endl;
@@ -107,16 +113,24 @@ bool Rocket::staticFire()
         {
             cout << "\t\tRocket is not required satellites and does not have." << endl;
         }
+
+        cout<<"\t\tEnter any value to continue -";
+        cin>>anyUserInput;
     }
     cout << "\tIdentifying spacecraft on rocket..." << endl;
     if (this->spacecraft_)
     {
         cout << "\t\tRocket has spacecraft: " << this->spacecraft_->getName() << endl;
+        cout<<"\t\tEnter any value to continue -";
     }
     else
     {
         cout << "\tBuild incomplete. Rocket has no spacecraft.";
+        cout<<"\tEnter any value to continue -";
     }
+
+    cin>>anyUserInput;
+
     cout << "\tExamining the engines..." << endl;
     // check if the F9 has 9 Merlin engines and the Heavy has the other amount
     list<Engine*>::iterator it = engines.begin();
@@ -153,6 +167,8 @@ bool Rocket::staticFire()
         }
         cout << endl;
     }
+    cout<<"\tEnter any value to continue -";
+    cin>>anyUserInput;
     cout << "\t" <<  this->getRocketName() << " has the right number and type of engines." << endl;
     return true;
 }
@@ -270,7 +286,7 @@ void Rocket::makeMemento(SimulationState *m)
         
 
     // list<Engine *>::iterator it = engines.begin();
-    cout << "Deleting " << engines.size() << " engines " << endl;
+    // cout << "Deleting " << engines.size() << " engines " << endl;
     engines.erase(engines.begin(), engines.end());
     cout << endl;
     // }
@@ -283,7 +299,7 @@ void Rocket::makeMemento(SimulationState *m)
             this->engines.push_back(pm->createMerlinEngine());
         }
 
-        cout << "Adding 1 merlin vacuum engines" << endl;
+        cout << "Adding 1 merlin vacuum engine" << endl;
         this->engines.push_back(pm->createMerlinVacuumEngine());
     }
     else
@@ -329,7 +345,7 @@ void Rocket::makeMemento(SimulationState *m)
 void Rocket::printInformation()
 {
 
-    cout << "\n--- ROCKET INFORMATION ---" << endl;
+    cout << "\n\n--- ROCKET INFORMATION ---" << endl;
     cout << "Rocket name: \t\t" << rocketName << endl;
 
     cout << "Engines: \t\t" << engines.size() << endl;

@@ -52,7 +52,7 @@ void FalconHeavy::setNext(Rocket *r)
 
 void FalconHeavy::handleRequest(string n, bool change)
 {
-    cout << "FH" << endl;
+    // cout << "FH" << endl;
     // cout << satelliteCluster->getNumber() << endl;
     if (n == "Falcon Heavy")
     {

@@ -303,6 +303,7 @@ int main()
             count++;
             userInputToContinue("Rocket completed launch");
             cout<<"===========================" << endl;
+            
         }
     }
     else{
