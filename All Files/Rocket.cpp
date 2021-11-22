@@ -43,7 +43,7 @@ void Rocket::addSatellites(int c)
     {
         //  no satellites
         cout << this->getRocketName() << " has no satellites" << endl;
-        satelliteCluster = nullptr;
+        satelliteCluster = NULL;
     }
 }
 // template method
@@ -160,6 +160,12 @@ void Rocket::setCondition(bool b)
     observer->update();
     observer->print();
 }
+// bool Rocket::setCondition(bool b)
+// {
+//     satelliteCluster->setState(b);
+//     observer->update();
+//     observer->print();
+// }
 
 // State
 void Rocket::addState(State *s)
@@ -188,12 +194,9 @@ void Rocket::changeStage()
     }
 }
 
-
-
-
 SimulationState *Rocket::createMemento()
 {
-    bool b = (satelliteCluster==nullptr) ? false : true;
+    bool b = (satelliteCluster == nullptr) ? false : true;
 
     SimulationState *m = new SimulationState(rocketName, spacecraft_->getName(), b, currentStage->getCurrentState());
     // SimulationState *m = new SimulationState(rocketName, spacecraft_->getName(), b, "grounded");
@@ -203,61 +206,114 @@ SimulationState *Rocket::createMemento()
 
 void Rocket::makeMemento(SimulationState *m)
 {
-    StateRocket *sr=m->getRState();
-    bool b=sr->getBool();
-    string n=sr->getName();
-    string sc=sr->getSpacecraft();
-    string st=sr->getStage();
+    StateRocket *sr = m->getRState();
+    bool b = sr->getBool();
+    string n = sr->getName();
+    string sc = sr->getSpacecraft();
+    string st = sr->getStage();
     //engines
-    
+
     //
 
     delete spacecraft_;
-    if ( sc=="Crew Dragon")
-        spacecraft_= new CrewDragon();
+    if (sc == "Crew Dragon")
+        spacecraft_ = new CrewDragon();
     else
-        spacecraft_=new Dragon();
-    
+        spacecraft_ = new Dragon();
+
     //
 
-    delete currentStage;    
-    if(currentStage->getCurrentState()=="grounded")
+    delete currentStage;
+    if (currentStage->getCurrentState() == "Grounded")
         currentStage = new Stage_Grounded();
-    else if(currentStage->getCurrentState()=="stage one")
-        currentStage=new Stage_One();
-    else if(currentStage->getCurrentState()=="stage two")
-        currentStage=new Stage_Two();
+    else if (currentStage->getCurrentState() == "Lift Off")
+        currentStage = new Stage_One();
+    else if (currentStage->getCurrentState() == "High Orbit")
+        currentStage = new Stage_Two();
     else
-        currentStage=new Stage_Orbit();
+        currentStage = new Stage_Orbit();
 
     //
-        
-    if(n=="Falcon Heavy"){
-        //build engines
+    list<Engine *>::iterator it = engines.begin();
+    cout << "Deleting "  << engines.size() << " engines " << endl;
+    engines.erase(engines.begin(), engines.end());
+    cout << endl;
+    // }
+
+    if (n == "Falcon 9")
+    {
+        cout << "Core 1: Adding 9 merlin engines" << endl;
+        for (int i = 0; i < 9; i++)
+        {
+            this->engines.push_back(engineFactory[0]->createEngine());
+        }
+
+        cout << "Adding 1 merlin vacuum engines" << endl;
+        this->engines.push_back(engineFactory[1]->createEngine());
     }
-    else{
-        //build engines
+    else
+    {
+        cout << "Core 1: Adding 9 merlin engines" << endl;
+        for (int i = 0; i < 9; i++)
+        {
+            this->engines.push_back(engineFactory[0]->createEngine());
+        }
+
+        cout << "Core 2: Adding 9 merlin engines" << endl;
+        for (int i = 0; i < 9; i++)
+        {
+            this->engines.push_back(engineFactory[0]->createEngine());
+        }
+
+        cout << "Core 3: Adding 9 merlin engines" << endl;
+        for (int i = 0; i < 9; i++)
+        {
+            this->engines.push_back(engineFactory[0]->createEngine());
+        }
+
+        cout << "Adding 1 merlin vacuum engines" << endl;
+        this->engines.push_back(engineFactory[1]->createEngine());
     }
 
     //
 
-    if(b==false)
-        satelliteCluster=nullptr;
-    else{
-        //build satellites
+    if (b == false)
+    {
+        cout << "Not building satellites" << endl;
+        satelliteCluster = nullptr;
+    }
+    else
+    {
+        cout << "Rebuilding satellites" << endl;
+        satelliteCluster = new Cluster();
     }
 
     //=====================================================================
-
-    
 }
 
-void Rocket::printInformation(){
-    cout<<""<<endl;
-    cout<<""<<endl;
-    cout<<""<<endl;
-    cout<<""<<endl;
-    cout<<""<<endl;
-    cout<<""<<endl;
-    cout<<""<<endl;
+void Rocket::printInformation()
+{
+
+    cout << "\n---ROCKET INFORMATION---" << endl;
+    cout << "Rocket name: \t" << rocketName << endl;
+
+    if (satelliteCluster == nullptr)
+        cout << "Satellites: no satellites" << endl;
+    else
+        cout << "Satellites: " << satelliteCluster->getNumber() << endl;
+
+    cout << "Engines: " << engines.size() << endl;
+    // list<Engine *>::iterator it = engines.begin();
+    // for (;)
+    // {
+    //     cout << "Deleting engine " << (*it)->getName() << endl;
+
+    // }
+    cout << endl;
+    // }
+    // cout << "" << endl;
+    // cout << "" << endl;
+    // cout << "" << endl;
+    // cout << "" << endl;
+    cout << "------------------------" << endl;
 }

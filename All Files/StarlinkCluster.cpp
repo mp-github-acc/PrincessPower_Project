@@ -11,6 +11,7 @@ Cluster::Cluster()
     cout << "Total: " << total << endl;
 }
 Cluster::~Cluster() {}
+
 void Cluster::add(StarLink *satellite)
 {
     total = ++number;                    // increase the total and the number

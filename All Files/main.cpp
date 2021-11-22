@@ -19,7 +19,6 @@
 #include "SimulationState.h"
 #include "StateRocket.h"
 
-
 //Princess power!
 
 using namespace std;
@@ -51,7 +50,7 @@ int main()
             break;
         }
     }
-/*
+    /*
     choice = 0; [0] 
     other = 1 - choice = 1; [1]
 
@@ -60,7 +59,7 @@ int main()
 */
     // Rocket creation
     Rocket *newRocket = rFactory[choice]->createRocket();
-    newRocket->setNext(rFactory[1 - choice]->createRocket()); 
+    newRocket->setNext(rFactory[1 - choice]->createRocket());
     while (true)
     {
 
@@ -96,9 +95,8 @@ int main()
     }
     // engines as well
 
-    cout << "Adding engines to " << newRocket->getRocketName()  << endl;
+    cout << "Adding engines to " << newRocket->getRocketName() << endl;
     newRocket->addEngine();
-
 
     cout << endl;
     cout << " ---------------------- Static Fire ------------------------------- " << endl;
@@ -125,23 +123,28 @@ int main()
     CommandControlCenter *controls = new CommandControlCenter(newRocket, newRocket->getSpacecraft());
     // Attach observers
     controls->liftOff();
-    // need this to be conditional 
-    newRocket->handleRequest(newRocket->getRocketName());
-    // newRocket->implementObsever();
-    // newRocket->setCondition(true);
+    // need this to be conditional
+    // if(newRocket->hasSatellites()){
+    //     newRocket->setCondition(true);
+    // }
+    // newRocket->handleRequest(newRocket->getRocketName(), true);
     // State
 
-    SimulationState* memento=newRocket->createMemento();
+    newRocket->printInformation();
+
+    SimulationState *memento = newRocket->createMemento();
     StateCaretaker care;
     care.store(memento);
-    
+
     newRocket->changeStage();
     newRocket->changeStage();
     newRocket->changeStage();
     newRocket->changeStage();
 
-    SimulationState* temp=care.retrieveState();
+    SimulationState *temp = care.retrieveState();
     newRocket->makeMemento(temp);
-    
+
+    newRocket->printInformation();
+
     return 0;
 }

@@ -6,3 +6,7 @@ Engine::Engine(){
 Engine::~Engine(){
     
 }
+
+string Engine::getName(){
+    return name;
+}

@@ -11,7 +11,7 @@ public:
     FalconNine();
     ~FalconNine();
     void addEngine();
-    void handleRequest(string n);
+    void handleRequest(string n, bool r);
     void setNext(Rocket* r);
 };
 #endif

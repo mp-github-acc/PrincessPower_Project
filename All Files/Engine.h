@@ -6,8 +6,12 @@ using namespace std;
 
 class Engine
 {
+    protected:
+        string name;
     public:
         Engine();
         ~Engine();
+        string getName();
+        
 };
 #endif

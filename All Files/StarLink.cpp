@@ -58,5 +58,6 @@ bool StarLink::getState(){
 }
 
 void StarLink::setState(bool b){
+    cout << "Satellite working state change from: " << workingState << " to " << b << endl;
     workingState = b;
 }

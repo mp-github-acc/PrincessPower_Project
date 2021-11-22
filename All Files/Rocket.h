@@ -69,13 +69,20 @@ public:
     // Observer
     void implementObsever();
     void setCondition(bool b);
+    // bool setCondition(bool b);
+    // bool hasSatellites(){
+    //     if(satelliteCluster != NULL){
+    //         return true;
+    //     }
+    //     return false;
+    // }
 
     // State
     void addState(State *s);
     void changeStage();
 
     // Chain of Responsibility
-    virtual void handleRequest(string n) = 0;
+    virtual void handleRequest(string n, bool c) = 0;
     virtual void setNext(Rocket* r) = 0;
     // void checkOne();
     // void checkTwo();
