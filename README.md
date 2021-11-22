@@ -14,10 +14,10 @@ Members:
 
 
 To run program:
--go to "Final Submission" folder
--go to "Systems" folder
--"make" to compile 
--"make run" to run program
--follow prompts to build, simulate and launch rockets
+- go to "Final Submission" folder
+- go to "Systems" folder
+- "make" to compile 
+- "make run" to run program
+- follow prompts to build, simulate and launch rockets
 
 
