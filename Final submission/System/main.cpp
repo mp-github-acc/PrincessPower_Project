@@ -43,9 +43,8 @@ int main()
     Rocket *newRocket;
 
     list<Rocket *> batch;
-    
 
-    bool gotoLaunch=false;
+    bool gotoLaunch = false;
     do
     {
         while (!canContinue)
@@ -66,7 +65,6 @@ int main()
                     break;
                 }
             }
-  
 
             // Rocket creation
             newRocket = rFactory[choice]->createRocket();
@@ -105,11 +103,11 @@ int main()
             }
             // engines as well
 
-            cout <<endl<< "Adding engines to " << newRocket->getRocketName() << endl;
+            cout << endl
+                 << "Adding engines to " << newRocket->getRocketName() << endl;
             newRocket->addEngine();
 
             userInputToContinue("Starting static fire");
-            
 
             cout << endl;
             cout << " ---------------------- Static Fire ------------------------------- " << endl;
@@ -126,8 +124,6 @@ int main()
                 userInputToContinue("Restarting construction");
             }
             cout << endl;
-
-            
         }
         if (!canContinue)
         {
@@ -140,7 +136,6 @@ int main()
 
             cout << " ---------------------- Simulation ------------------------------- " << endl;
             cout << "Simulation will start shortly." << endl;
-            
 
             SimulationState *memento = newRocket->createMemento();
             StateCaretaker care;
@@ -162,11 +157,8 @@ int main()
             cout << "--------------------" << endl;
             userInputToContinue("");
 
-            // Memento
             newRocket->printInformation();
             userInputToContinue("Rocket's current information");
-
-            
 
             SpaceStation *spacestation = new SpaceStation();
 
@@ -176,7 +168,7 @@ int main()
             newRocket->deploySatellites();
             newRocket->handleRequest(newRocket->getRocketName(), true);
             userInputToContinue("");
-            
+
             cout << endl;
             cout << "--------------------" << endl;
             cout << "--------------------" << endl;
@@ -198,7 +190,7 @@ int main()
             adp->dock();
             // cout << endl;
             // adp->dock();
-            
+
             newRocket->printInformation();
             userInputToContinue("Rocket's current information");
 
@@ -216,38 +208,35 @@ int main()
             newRocket->printInformation();
 
             batch.push_back(newRocket);
-
         }
-        int answer;     
+        int answer;
 
         while (true)
         {
-            cout<<"Do you want to go to launch? 1 = Yes, 0 = No - ";
+            cout << "Do you want to go to launch? 1 = Yes, 0 = No - ";
             cin >> answer;
             if (answer == 1)
             {
-                gotoLaunch=true;
+                gotoLaunch = true;
                 break;
             }
             if (answer == 0)
             {
-                canContinue=false;
+                canContinue = false;
                 break;
             }
         }
-        
-        
-    }
-    while(!gotoLaunch);
+
+    } while (!gotoLaunch);
 
     if (!batch.empty() && gotoLaunch)
     {
         cout << "\n\n\n\n----------------------LAUNCH SEQUENCE----------------------------" << endl;
-        int count=1;
-        while(!batch.empty())
+        int count = 1;
+        while (!batch.empty())
         {
             //can launch
-            cout << "\n\n====Rocket #"<<count<<"====" << endl;
+            cout << "\n\n====Rocket #" << count << "====" << endl;
 
             Rocket *launchRocket;
             SpaceStation *sp = new SpaceStation();
@@ -256,7 +245,7 @@ int main()
             batch.pop_front();
             launchRocket->printInformation();
             userInputToContinue("Rocket's current information");
-            
+
             userInputToContinue("Preparing to launch rocket");
             CommandControlCenter *contr = new CommandControlCenter(launchRocket, launchRocket->getSpacecraft());
             cout << "--------------------" << endl;
@@ -272,7 +261,6 @@ int main()
             launchRocket->printInformation();
             userInputToContinue("Rocket's current information");
 
-
             cout << "--------------------" << endl;
             launchRocket->changeStage();
             // Attach observers
@@ -283,12 +271,18 @@ int main()
             cout << "--------------------" << endl;
             cout << "Attempting to deploy spacecraft..." << endl;
             RocketAdapter *ra = new RocketAdapter(launchRocket->getSpacecraft());
-            cout << "\t";ra->attach();
-            cout << "\t";ra->attach();
-            cout << "\t";ra->ignite();
-            cout << "\t";ra->accelerate();
-            cout << "\t";ra->decelerate();
-            cout << "\t";ra->dock();
+            cout << "\t";
+            ra->attach();
+            cout << "\t";
+            ra->attach();
+            cout << "\t";
+            ra->ignite();
+            cout << "\t";
+            ra->accelerate();
+            cout << "\t";
+            ra->decelerate();
+            cout << "\t";
+            ra->dock();
 
             launchRocket->printInformation();
             userInputToContinue("Rocket's current information");
@@ -302,30 +296,34 @@ int main()
 
             count++;
             userInputToContinue("Rocket completed launch");
-            cout<<"===========================" << endl;
-            
+            cout << "===========================" << endl;
         }
     }
-    else{
+    else
+    {
         cout << "Not running launch, exiting program" << endl;
     }
-       
+
     //
-    cout << "End of program, now exiting. Thank you for running the simulation with Princess Power!\n\n" << endl;
+    cout << "End of program, now exiting. Thank you for running the simulation with Princess Power!\n\n"
+         << endl;
     return 0;
 }
 
-void userInputToContinue(string s){
+void userInputToContinue(string s)
+{
     string anyUserInput;
-    cout<<endl;
-    if(s==""){        
-        cout<<"Enter any value to continue -";
-        cin>>anyUserInput;
+    cout << endl;
+    if (s == "")
+    {
+        cout << "Enter any value to continue -";
+        cin >> anyUserInput;
     }
-    else{
-        cout<<s<<", enter any value to continue -";
-        cin>>anyUserInput;
+    else
+    {
+        cout << s << ", enter any value to continue -";
+        cin >> anyUserInput;
     }
-    cout<<endl;
+    cout << endl;
 }
 //userInputToContinue("");
